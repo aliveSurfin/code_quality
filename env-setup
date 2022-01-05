@@ -1,0 +1,7 @@
+sudo apt-get -y install latexmk texlive texlive-full texlive-latex-recommended texlive-pictures texlive-latex-extra
+
+VS CODE
+
+Latex Workshop
+
+https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl
