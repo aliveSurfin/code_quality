@@ -14,10 +14,13 @@
 : A look how the parts of a linter works
 
 > [A hands-on introduction to static code analysis](https://deepsource.io/blog/introduction-static-code-analysis/)
-: Incredible deep dive into creating 
+: Incredible deep dive into creating a static analysis tool in python
 
+>[Making Your Own JavaScript Linter](https://medium.com/codex/making-your-own-javascript-linter-part-1-ee9f91dc49d8)
+: Creating a linter in javascript
 
-
+> [perils of parsers **READ THIS**](https://www.semanticdesigns.com/Products/DMS/LifeAfterParsing.html)
+: How parsing works and the problems inherit 
 ---
 ***[AST (Abstract Syntax Tree)](https://medium.com/@dinis.cruz/ast-abstract-syntax-tree-538aa146c53b)***
 ```python
@@ -35,4 +38,3 @@
 
 ---
 
-> [perils of parsers **READ THIS**](https://www.semanticdesigns.com/Products/DMS/LifeAfterParsing.html)
