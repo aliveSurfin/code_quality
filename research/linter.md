@@ -21,6 +21,27 @@
 
 > [perils of parsers **READ THIS**](https://www.semanticdesigns.com/Products/DMS/LifeAfterParsing.html)
 : How parsing works and the problems inherit 
+
+> [How to Build Your Own Static Analyzer
+For Fun and Profit
+Dr. Andy Chou
+Chief Scientist
+Coverity Inc.](https://crypto.stanford.edu/cs155old/cs155-spring06/07-sec-coding.pdf)
+: standford 
+
+
+***Videos***
+> [DIY Static Code Analyzer: Building your own security tools with Joern](https://www.youtube.com/watch?v=KDQu6vHSG98) : Creating static code analyser with [Joern](https://joern.io/) - [Associated Reading](https://nsec.io/session/2021-diy-static-code-analyzer-building-your-own-security-tools-with-joern.html)
+
+> [SonarJS: How To Build a Static Code Analyzer - Elena Vilchik & Carlo Bottiglieri](https://www.youtube.com/watch?v=-CGpVrydTyg)
+: Nice rundown of steps of creating static analysis in javascript
+
+> [Static Code Analysis with Python](https://www.youtube.com/watch?v=mfXIJ-Fu5Fw)
+: Very nice rundown of static code analysis in python
+
+> [GopherCon 2021: Akhil Indurti - Writing a Static Analyzer for Go Code
+](https://www.youtube.com/watch?v=RFa_zSrxDK8)
+: nice video on writing a basic static analyser for go
 ---
 ***[AST (Abstract Syntax Tree)](https://medium.com/@dinis.cruz/ast-abstract-syntax-tree-538aa146c53b)***
 ```python
@@ -37,4 +58,15 @@
 
 
 ---
+
+***Similarities with compiler***
+
+<p align="center" >
+<img src="./images/compiler.png" style="width:50%;background-color:white">
+<p>
+
+<p align="center" >
+<img src="./images/code-analyser.png" style="width:50%;background-color:white">
+<p>
+
 
