@@ -8,7 +8,7 @@
 * Complexity Measures 
 [link](https://camelcaseguy.medium.com/measuring-code-quality-qualitative-and-quantitative-3d6eeb633a90)
   * [Halstead Complexity Measures](https://en.wikipedia.org/wiki/Halstead_complexity_measures)
-  * [Cyclomatic Complexity](https://en.wikipedia.org/wiki/Cyclomatic_complexity)#
+  * [Cyclomatic Complexity](https://en.wikipedia.org/wiki/Cyclomatic_complexity)
     * Invented by thomas J.McCabe [paper](http://www.literateprogramming.com/mccabe.pdf)
   * [Weighted Micro Function Points](https://en.wikipedia.org/wiki/Weighted_Micro_Function_Points)
   
