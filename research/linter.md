@@ -1,5 +1,4 @@
 **Creating A Linter**
-
 <p align="center" >
 <img src="./images/static-analysis.png" style="width:50%;background-color:black">
 <p>
