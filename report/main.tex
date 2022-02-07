@@ -1,5 +1,9 @@
 \documentclass[sigconf, nonacm]{acmart}
-
+\usepackage{pdfpages}
+\usepackage{amsmath}
+\newcommand*\textfrac[2]{
+  \frac{\text{#1}}{\text{#2}}
+}
 %% complete the rights form.
 \setcopyright{none}
 
@@ -14,7 +18,7 @@
 %%
 %% The "title" command has an optional parameter,
 %% allowing the author to define a "short title" to be used in page headers.
-\title{Code Quality Metrics}
+\title{Code Quality Metrics - Mid-term}
 
 
 \author{Christy McCarron}
@@ -54,6 +58,9 @@
 % THIS IS THE MAIN PARTS OF THE DOCUMENT
 \input{sections/introduction}
 \input{sections/background}
+\input{sections/features.tex}
+\input{sections/technology.tex}
+\input{sections/movingForward.tex}
 
 
 
@@ -63,9 +70,9 @@
 %% (and NOT an unnumbered section). This ensures the proper
 %% identification of the section in the article metadata, and the
 %% consistent spelling of the heading.
-\begin{acks}
-To Robert, for the bagels and explaining CMYK and color spaces.
-\end{acks}
+% \begin{acks}
+% To Robert, for the bagels and explaining CMYK and color spaces.
+% \end{acks}
 
 %%
 %% The next two lines define the bibliography style to be used, and
