@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CodeEditor from './components/code_editor/CodeEditor';
 
 
 import './reset.scss';
@@ -54,6 +55,7 @@ render() {
           <button type="submit">Submit</button>
         </form>
         <p>{this.state.responseToPost}</p>
+        <CodeEditor></CodeEditor>
       </div>
     );
   }
