@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CodeEditor from './components/code_editor/CodeEditor';
 
-
+import "./styles/reset.css"
 
 
 class App extends Component {
