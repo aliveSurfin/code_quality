@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CodeEditor from './components/code_editor/CodeEditor';
-
+import MainLayout from './components/main_layout/MainLayout'
+import InDev from './components/in_development/in_dev';
 import "./styles/reset.css"
 
 
@@ -27,7 +27,7 @@ class App extends Component {
   
   handleSubmit = async e => {
     e.preventDefault();
-    const response = await fetch('/api/world', {
+    const response = await fetch('/api/test', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -42,10 +42,8 @@ class App extends Component {
 render() {
     return (
       <div className="App">
-      <CodeEditor></CodeEditor>
-      {this.state.response}
-      {this.state.responseToPost}
-      {this.state.post}
+        <MainLayout/>
+        <InDev/>
     </div>
     );
   }

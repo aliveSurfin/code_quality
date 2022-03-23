@@ -14,7 +14,6 @@ class Overlay extends PureComponent {
     this.setState({ shown: false });
   }
   focusSelf() {
-    console.log("focus self");
     this.state.div_ref.current.focus();
   }
   componentDidMount() {
