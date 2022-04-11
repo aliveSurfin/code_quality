@@ -1,19 +1,28 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+import express from 'express';
+import bodyParser from 'body-parser';
 
-const app = express();
+
+const app = express()
 const port = process.env.PORT || 5000;
-const path = require('path');
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(
+    import.meta.url);
+const __dirname = path.dirname(__filename);
+import Parser from './parsing/parser/Parser.js';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/hello', (req, res) => {
-    res.send({ express: 'Hello From Express' });
+    const parser = new Parser()
+    res.send({ express: 'Hello From Express', test: parser.parse("test;") });
 });
 
 app.post('/api/test', (req, res) => {
     console.log(req.body);
+
+    console.log()
     res.send(
         `Post received : body =  ${req.body.post}`,
     );
