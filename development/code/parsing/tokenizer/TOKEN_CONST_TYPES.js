@@ -7,6 +7,8 @@ const TOKEN_TYPES = {
     CURLY_CLOSE: "}",
     PAREN_OPEN: "(",
     PAREN_CLOSE: ")",
+    SQUARE_OPEN: "SQUARE_OPEN",
+    SQUARE_CLOSE: "SQUARE_CLOSE",
     COMMA: ",",
     IF: "IF",
     ELSE: "ELSE",

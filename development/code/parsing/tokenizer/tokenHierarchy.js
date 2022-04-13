@@ -17,6 +17,8 @@ const TOKEN_SPEC = [
     [/^\btrue\b/, TOKEN_TYPES.TRUE],
     [/^\bfalse\b/, TOKEN_TYPES.FALSE],
     [/^\bnull\b/, TOKEN_TYPES.NULL],
+    [/^\[/, TOKEN_TYPES.SQUARE_OPEN],
+    [/^\]/, TOKEN_TYPES.SQUARE_CLOSE],
     [/^\d+/, TOKEN_TYPES.NUMBER],
     [/^\w+/, TOKEN_TYPES.IDENTIFIER],
     [/^[=!]==/, TOKEN_TYPES.EQUALITY_OPERATOR],

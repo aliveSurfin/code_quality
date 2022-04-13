@@ -15,6 +15,7 @@ const AST_TYPES = {
     EqualityExpression: "EqualityExpression",
     BooleanLiteral: "BooleanLiteral",
     NullLiteral: "NullLiteral",
+    ArrayExpression: "ArrayExpression",
 };
 
 export default AST_TYPES;

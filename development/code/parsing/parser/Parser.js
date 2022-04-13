@@ -296,6 +296,8 @@ class Parser {
             return this.Literal()
         }
         switch (this.lookahead.type) {
+            case TOKEN_TYPES.SQUARE_OPEN:
+                return this.ArrayExpression();
             case TOKEN_TYPES.PAREN_OPEN:
                 return this.ParenthesesExpression()
             default:
@@ -336,6 +338,28 @@ class Parser {
         const type = this.lookahead == null ? "unknown" : `"${this.lookahead.type}"`;
         /* istanbul ignore next */
         throw new SyntaxError(`Unexpected literal production of type: ${type} ${loc}`);
+    }
+    ArrayExpression() {
+        const start = this.eat(TOKEN_TYPES.SQUARE_OPEN);
+        const elements = []
+        if (this.lookahead.type === TOKEN_TYPES.SQUARE_CLOSE) {
+            let end = this.eat(TOKEN_TYPES.SQUARE_CLOSE)
+            return {
+                type: AST_TYPES.ArrayExpression,
+                elements,
+                loc: { start: start.loc, end: end.loc },
+            }
+        }
+        do {
+            elements.push(this.PrimaryExpression())
+        } while (this.lookahead.type === TOKEN_TYPES.COMMA && this.eat(TOKEN_TYPES.COMMA))
+        const end = this.eat(TOKEN_TYPES.SQUARE_CLOSE)
+        return {
+            type: AST_TYPES.ArrayExpression,
+            elements,
+            loc: { start: start.loc, end: end.loc },
+        }
+
     }
     BooleanTypeToValue(type) {
         switch (type) {
