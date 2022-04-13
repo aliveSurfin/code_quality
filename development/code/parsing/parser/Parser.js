@@ -170,7 +170,7 @@ class Parser {
         return this.AssignmentExpression()
     }
     AssignmentExpression() {
-        const left = this.EqualityExpression()
+        const left = this.LogicalOrExpression()
         if (!this.isAssignmentOperator(this.lookahead.type)) {
             return left
         }
@@ -233,6 +233,36 @@ class Parser {
             return this.eat(TOKEN_TYPES.ASSIGNMENT_OPERATOR)
         }
         return this.eat(TOKEN_TYPES.ASSIGNMENT_COMBO_OPERATOR)
+    }
+    LogicalOrExpression() {
+        let left = this.LogicalAndExpression()
+        while (this.lookahead.type === TOKEN_TYPES.LOGICAL_OR_OPERATOR) {
+            const operator = this.eat(TOKEN_TYPES.LOGICAL_OR_OPERATOR)
+            const right = this.LogicalAndExpression()
+            left = {
+                type: 'LogicalExpression',
+                operator,
+                left,
+                right,
+                loc: { start: left.loc.start, end: right.loc.end },
+            }
+        }
+        return left
+    }
+    LogicalAndExpression() {
+        let left = this.EqualityExpression()
+        while (this.lookahead.type === TOKEN_TYPES.LOGICAL_AND_OPERATOR) {
+            const operator = this.eat(TOKEN_TYPES.LOGICAL_AND_OPERATOR)
+            const right = this.EqualityExpression()
+            left = {
+                type: 'LogicalExpression',
+                operator,
+                left,
+                right,
+                loc: { start: left.loc.start, end: right.loc.end },
+            }
+        }
+        return left
     }
     EqualityExpression() {
         let left = this.RelationalExpression()
