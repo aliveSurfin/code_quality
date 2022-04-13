@@ -20,9 +20,9 @@ import "prismjs/components/prism-yaml";
 import "prismjs/components/prism-yaml";
 import "prismjs/components/prism-java";
 import "prismjs/components/prism-go";
-import "prismjs/components/prism-c"
-import "prismjs/components/prism-cpp"
-import "prismjs/components/prism-csharp"
+import "prismjs/components/prism-c";
+import "prismjs/components/prism-cpp";
+import "prismjs/components/prism-csharp";
 
 import Overlay from "../reusable_comps/overlay/overlay";
 const overlayElement = (
@@ -30,13 +30,17 @@ const overlayElement = (
     {" "}
     <b>This is a development build for research and testing only </b>
     <br /> If you have found your way here without reading the participant
-    information,{" "}
-     {/* eslint-disable-next-line */}
-    <a target="_blank"  href="https://forms.office.com/r/f5ef0regrw">
+    information, {/* eslint-disable-next-line */}
+    <a target="_blank" href="https://forms.office.com/r/f5ef0regrw">
       please click here
     </a>{" "}
   </span>
 );
+const autoComplete = {
+  "[": "]",
+  "(": ")",
+  "{": "}",
+};
 // inspired from https://css-tricks.com/creating-an-editable-textarea-that-supports-syntax-highlighted-code/
 class CodeEditor extends React.Component {
   constructor(props) {
@@ -53,8 +57,19 @@ class CodeEditor extends React.Component {
   componentDidUpdate() {
     Prism.highlightAll();
   }
+  handleAutoComplete(data){
+    
+  }
   handleInput(event) {
     event.persist(); // stops react from recycling the SyntheticEvent on re-render
+    let addition = autoComplete[event.nativeEvent.data];
+      
+    if (addition !== undefined) {
+      this.state.editingRef.current.value =
+      this.state.editingRef.current.value + addition;
+      let end = this.state.editingRef.current.selectionEnd
+      this.state.editingRef.current.selectionEnd = end -1;
+    }
     let text = this.state.editingRef.current.value;
     if (text[text.length - 1] === "\n") {
       text += " ";
