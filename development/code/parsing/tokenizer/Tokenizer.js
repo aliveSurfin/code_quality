@@ -55,7 +55,7 @@ class Tokenizer {
     }
     next() {
         if (!this.hasMoreTokens()) {
-            return null
+            return { type: TOKEN_TYPES.EOF, loc: { start: this.position(), end: this.position() } }
         }
         const cur = this.source.slice(this.cursor)
         for (const [regExp, type] of TOKEN_SPEC) {
@@ -67,13 +67,13 @@ class Tokenizer {
             if (tokenValue == null) {
                 continue
             }
-            // all whitespace tokens, " ", "\n", "\t"
+
+            if (type === TOKEN_TYPES.NEWLINE) {
+                this.line++;
+                this.col = 0;
+            }
+            // " ", "\t"
             if (type === TOKEN_TYPES.WHITESPACE) {
-                // advance line and reset col on newline char
-                if (/\r\n|\r|\n/.exec(tokenValue) != null) {
-                    this.line++;
-                    this.col = 0;
-                } else
                 if (/^\t/.exec(tokenValue) != null) { // 4 spaces for a tab
                     this.col += 3; // 1 eaten already
                 }

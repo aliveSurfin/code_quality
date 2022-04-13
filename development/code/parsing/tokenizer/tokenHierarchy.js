@@ -1,6 +1,7 @@
 import TOKEN_TYPES from "./TOKEN_CONST_TYPES.js";
 const TOKEN_SPEC = [
-    [/^\s/, TOKEN_TYPES.WHITESPACE], // we are taking whitespace one at a time to track line/cols
+    [/^\n/, TOKEN_TYPES.NEWLINE], // caught by below, must come before
+    [/^\s/, TOKEN_TYPES.WHITESPACE],
     [/^\/\/.*/, TOKEN_TYPES.SINGLE_LINE_COMMENT],
     [/^\/\*[\s\S]*?\*\//, TOKEN_TYPES.MULTI_LINE_COMMENT],
     [/^;/, TOKEN_TYPES.SEMI_COLON],

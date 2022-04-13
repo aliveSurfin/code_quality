@@ -164,7 +164,27 @@ const testTable = [
         }
     ],
 
-
+    [`{}`,
+        {
+            "type": "Program",
+            "body": [{
+                "type": "BlockStatement",
+                "body": [],
+                "loc": {
+                    "start": {
+                        "cursor": 0,
+                        "column": 0,
+                        "line": 0
+                    },
+                    "end": {
+                        "cursor": 2,
+                        "column": 2,
+                        "line": 0
+                    }
+                }
+            }]
+        }
+    ]
 ]
 
 

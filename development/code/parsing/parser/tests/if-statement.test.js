@@ -42,21 +42,7 @@ const testTable = [
                 },
                 consequent: {
                     type: "BlockStatement",
-                    body: [{
-                        type: 'EmptyStatement',
-                        loc: {
-                            start: {
-                                column: 12,
-                                cursor: 29,
-                                line: 2,
-                            },
-                            end: {
-                                column: 13,
-                                cursor: 30,
-                                line: 2,
-                            }
-                        }
-                    }],
+                    body: [],
                     loc: {
                         start: {
                             column: 14,
@@ -72,21 +58,7 @@ const testTable = [
                 },
                 alternate: {
                     type: "BlockStatement",
-                    body: [{
-                        type: 'EmptyStatement',
-                        loc: {
-                            start: {
-                                column: 12,
-                                cursor: 60,
-                                line: 4,
-                            },
-                            end: {
-                                column: 13,
-                                cursor: 61,
-                                line: 4,
-                            }
-                        }
-                    }],
+                    body: [],
                     loc: {
                         start: {
                             column: 15,
@@ -145,21 +117,7 @@ const testTable = [
                 },
                 consequent: {
                     type: "BlockStatement",
-                    body: [{
-                        type: 'EmptyStatement',
-                        loc: {
-                            start: {
-                                column: 12,
-                                cursor: 29,
-                                line: 2,
-                            },
-                            end: {
-                                column: 13,
-                                cursor: 30,
-                                line: 2,
-                            }
-                        }
-                    }],
+                    body: [],
                     loc: {
                         start: {
                             column: 14,
@@ -254,21 +212,7 @@ if (a > b){
                 },
                 "consequent": {
                     "type": "BlockStatement",
-                    "body": [{
-                        "type": "EmptyStatement",
-                        "loc": {
-                            "start": {
-                                "cursor": 17,
-                                "column": 4,
-                                "line": 2
-                            },
-                            "end": {
-                                "cursor": 18,
-                                "column": 5,
-                                "line": 2
-                            }
-                        }
-                    }],
+                    "body": [],
                     "loc": {
                         "start": {
                             "cursor": 11,
