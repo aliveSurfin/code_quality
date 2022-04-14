@@ -17,6 +17,9 @@ const AST_TYPES = {
     NullLiteral: "NullLiteral",
     ArrayExpression: "ArrayExpression",
     UnaryExpression: "UnaryExpression",
+    WhileStatement: "WhileStatement",
+    DoWhileStatement: "DoWhileStatement",
+    ForStatement: "ForStatement",
 
 };
 

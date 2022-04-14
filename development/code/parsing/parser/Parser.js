@@ -70,12 +70,86 @@ class Parser {
                 return this.BlockStatement();
             case TOKEN_TYPES.VARIABLE_DECLARATION:
                 return this.VariableStatement();
+            case TOKEN_TYPES.WHILE:
+                return this.WhileStatement();
+            case TOKEN_TYPES.DO:
+                return this.DoWhileStatement();
+            case TOKEN_TYPES.FOR:
+                return this.ForStatement();
             default:
                 return this.ExpressionStatement();
 
         }
 
     }
+    WhileStatement() {
+        const start = this.eat(TOKEN_TYPES.WHILE)
+        this.eat(TOKEN_TYPES.PAREN_OPEN)
+        const test = this.Expression()
+        this.eat(TOKEN_TYPES.PAREN_CLOSE)
+        const body = this.Statement()
+        return {
+            type: AST_TYPES.WhileStatement,
+            test,
+            body,
+            loc: {
+                start: start.loc.start,
+                end: body.loc.end
+            }
+        }
+    }
+    ForStatement() {
+        const start = this.eat(TOKEN_TYPES.FOR);
+        this.eat(TOKEN_TYPES.PAREN_OPEN)
+        const init = this.lookahead.type === TOKEN_TYPES.SEMI_COLON ? null : this.ForStatementInit()
+        this.eat(TOKEN_TYPES.SEMI_COLON);
+        const test = this.lookahead.type === TOKEN_TYPES.SEMI_COLON ? null : this.Expression()
+        this.eat(TOKEN_TYPES.SEMI_COLON);
+        const update = this.lookahead.type === TOKEN_TYPES.PAREN_CLOSE ? null : this.Expression()
+        this.eat(TOKEN_TYPES.PAREN_CLOSE)
+
+        const body = this.Statement()
+
+        return {
+            type: AST_TYPES.ForStatement,
+            init: init ? init : null,
+            test: test ? test : null,
+            update: update ? update : null,
+            body,
+            loc: {
+                start: start.loc.start,
+                end: body.loc.end
+            }
+        }
+    }
+
+    ForStatementInit() {
+        if (this.lookahead.type === TOKEN_TYPES.VARIABLE_DECLARATION) {
+            return this.VariableStatementInit()
+        }
+        return this.Expression()
+    }
+    DoWhileStatement() {
+        const start = this.eat(TOKEN_TYPES.DO)
+
+        const body = this.Statement()
+        this.eat(TOKEN_TYPES.WHILE)
+        this.eat(TOKEN_TYPES.PAREN_OPEN)
+        const test = this.Expression()
+        const end = this.eat(TOKEN_TYPES.PAREN_CLOSE)
+        return {
+            type: AST_TYPES.DoWhileStatement,
+            test,
+            body,
+            loc: {
+                start: start.loc.start,
+                end: end.loc.end
+            }
+        }
+    }
+
+
+
     IfStatement() {
         const if_start = this.eat(TOKEN_TYPES.IF)
         const testStart = this.eat(TOKEN_TYPES.PAREN_OPEN)
@@ -111,7 +185,18 @@ class Parser {
             }
         }
     }
-
+    VariableStatementInit() {
+        const token = this.eat(TOKEN_TYPES.VARIABLE_DECLARATION);
+        const declarations = this.VariableDeclarationList();
+        return {
+            type: AST_TYPES.VariableStatement,
+            declarations,
+            loc: {
+                start: token.loc.start,
+                end: declarations.length > 0 ? declarations[declarations.length - 1].loc.end : token.loc.end,
+            }
+        }
+    }
     VariableStatement() {
         const token = this.eat(TOKEN_TYPES.VARIABLE_DECLARATION);
         const declarations = this.VariableDeclarationList();
@@ -376,8 +461,6 @@ class Parser {
                 return this.ParenthesesExpression()
             case TOKEN_TYPES.IDENTIFIER:
                 return this.Identifier()
-            default:
-                return this.LeftHandSideExpression()
         }
     }
     isLiteral(type) {
