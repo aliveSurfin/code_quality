@@ -70,6 +70,10 @@ class Parser {
                 return this.BlockStatement();
             case TOKEN_TYPES.VARIABLE_DECLARATION:
                 return this.VariableStatement();
+            case TOKEN_TYPES.FUNCTION_DECLARATION:
+                return this.FunctionDeclaration();
+            case TOKEN_TYPES.RETURN:
+                return this.ReturnStatement();
             case TOKEN_TYPES.WHILE:
                 return this.WhileStatement();
             case TOKEN_TYPES.DO:
@@ -81,6 +85,59 @@ class Parser {
 
         }
 
+    }
+
+    FunctionDeclaration() {
+        const start = this.eat(TOKEN_TYPES.FUNCTION_DECLARATION)
+        const name = this.Identifier()
+
+        this.eat(TOKEN_TYPES.PAREN_OPEN)
+
+        const params = this.lookahead.type === TOKEN_TYPES.PAREN_CLOSE ? [] : this.ParameterList()
+        this.eat(TOKEN_TYPES.PAREN_CLOSE)
+
+        const body = this.BlockStatement()
+
+        return {
+            type: AST_TYPES.FunctionDeclaration,
+            name,
+            params,
+            body,
+            loc: {
+                start: start.loc.start,
+                end: body.loc.end,
+            }
+        }
+
+    }
+    ParameterList() {
+        const params = [];
+
+        do {
+            params.push(this.Identifier());
+        } while (this.lookahead.type === TOKEN_TYPES.COMMA && this.eat(TOKEN_TYPES.COMMA))
+
+        return params
+    }
+    ReturnStatement() {
+        const start = this.eat(TOKEN_TYPES.RETURN)
+        const argument = (this.isEndOfStatementType(this.lookahead) || this.lookahead.type === TOKEN_TYPES.CURLY_CLOSE) ? null : this.Expression()
+        let end = argument
+        if (this.lookahead.type !== TOKEN_TYPES.CURLY_CLOSE) {
+            end = this.eatEndOfStatement()
+        }
+        if (end == null) {
+            end = start
+        }
+
+        return {
+            type: AST_TYPES.ReturnStatement,
+            argument,
+            loc: {
+                start: start.loc.start,
+                end: end.loc.end,
+            }
+        }
     }
     WhileStatement() {
         const start = this.eat(TOKEN_TYPES.WHILE)
@@ -185,6 +242,7 @@ class Parser {
             }
         }
     }
+
     VariableStatementInit() {
         const token = this.eat(TOKEN_TYPES.VARIABLE_DECLARATION);
         const declarations = this.VariableDeclarationList();

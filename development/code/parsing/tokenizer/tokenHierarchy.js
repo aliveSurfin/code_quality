@@ -21,6 +21,9 @@ const TOKEN_SPEC = [
     [/^\bwhile\b/, TOKEN_TYPES.WHILE],
     [/^\bdo\b/, TOKEN_TYPES.DO],
     [/^\bfor\b/, TOKEN_TYPES.FOR],
+    [/^\bfunction\b/, TOKEN_TYPES.FUNCTION_DECLARATION],
+    [/^\breturn\b/, TOKEN_TYPES.RETURN],
+
     [/^\[/, TOKEN_TYPES.SQUARE_OPEN],
     [/^\]/, TOKEN_TYPES.SQUARE_CLOSE],
     [/^\d+/, TOKEN_TYPES.NUMBER],

@@ -20,6 +20,8 @@ const AST_TYPES = {
     WhileStatement: "WhileStatement",
     DoWhileStatement: "DoWhileStatement",
     ForStatement: "ForStatement",
+    FunctionDeclaration: "FunctionDeclaration",
+    ReturnStatement: "ReturnStatement",
 
 };
 
