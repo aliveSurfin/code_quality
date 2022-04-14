@@ -31,6 +31,7 @@ const TOKEN_SPEC = [
     [/^[><]=?/, TOKEN_TYPES.RELATIONAL_OPERATOR],
     [/^&&/, TOKEN_TYPES.LOGICAL_AND_OPERATOR],
     [/^\|\|/, TOKEN_TYPES.LOGICAL_OR_OPERATOR],
+    [/^!/, TOKEN_TYPES.LOGICAL_NOT_OPERATOR],
 
     // [/^\d+(\.\d+)?$/, TOKEN_TYPES."NUMBER"], // https://stackoverflow.com/a/10256077 // float and int
     [/'[^']*'/, TOKEN_TYPES.STRING],

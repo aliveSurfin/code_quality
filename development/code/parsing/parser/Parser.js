@@ -226,7 +226,7 @@ class Parser {
         return left
     }
     LeftHandSideExpression() {
-        return this.Identifier()
+        return this.PrimaryExpression()
     }
     Identifier() {
         const ident = this.eat(TOKEN_TYPES.IDENTIFIER)
@@ -322,10 +322,10 @@ class Parser {
 
     }
     MultiplicativeExpression() {
-        let left = this.PrimaryExpression()
+        let left = this.UnaryExpression()
         while (this.lookahead.type !== TOKEN_TYPES.EOF && this.lookahead.type === TOKEN_TYPES.MULTIPLICATIVE_OPERATOR) {
             const operator = this.eat(TOKEN_TYPES.MULTIPLICATIVE_OPERATOR)
-            const right = this.PrimaryExpression()
+            const right = this.UnaryExpression()
             left = {
                 type: AST_TYPES.BinaryExpression,
                 operator,
@@ -339,6 +339,32 @@ class Parser {
         }
         return left;
     }
+    UnaryExpression() {
+        let operator;
+        switch (this.lookahead.type) {
+            case TOKEN_TYPES.ARITHMETIC_OPERATOR:
+                operator = this.eat(TOKEN_TYPES.ARITHMETIC_OPERATOR)
+                break;
+            case TOKEN_TYPES.LOGICAL_NOT_OPERATOR:
+                operator = this.eat(TOKEN_TYPES.LOGICAL_NOT_OPERATOR)
+                break;
+
+        }
+        if (operator != null) {
+            const argument = this.UnaryExpression()
+            return {
+                type: AST_TYPES.UnaryExpression,
+                operator,
+                argument,
+                loc: {
+                    start: operator.loc.start,
+                    end: argument.loc.end,
+                }
+
+            }
+        }
+        return this.LeftHandSideExpression()
+    }
     PrimaryExpression() {
         if (this.isLiteral(this.lookahead.type)) {
             return this.Literal()
@@ -348,6 +374,8 @@ class Parser {
                 return this.ArrayExpression();
             case TOKEN_TYPES.PAREN_OPEN:
                 return this.ParenthesesExpression()
+            case TOKEN_TYPES.IDENTIFIER:
+                return this.Identifier()
             default:
                 return this.LeftHandSideExpression()
         }

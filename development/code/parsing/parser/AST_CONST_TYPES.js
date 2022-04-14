@@ -16,6 +16,8 @@ const AST_TYPES = {
     BooleanLiteral: "BooleanLiteral",
     NullLiteral: "NullLiteral",
     ArrayExpression: "ArrayExpression",
+    UnaryExpression: "UnaryExpression",
+
 };
 
 export default AST_TYPES;
