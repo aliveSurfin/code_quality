@@ -418,7 +418,7 @@ class Parser {
 
     }
     checkValidAssignmentTarget(node) {
-        if (node.type === AST_TYPES.Identifier) {
+        if (node.type === AST_TYPES.Identifier || node.type == AST_TYPES.MemberExpression) {
             return node
         }
         throw new SyntaxError(`Incorrect assignment to type: ${node.type} : ${node.value} | ${node.loc.start.line}:${node.loc.start.column}`)
@@ -601,7 +601,7 @@ class Parser {
             return {
                 type: AST_TYPES.ArrayExpression,
                 elements,
-                loc: { start: start.loc, end: end.loc },
+                loc: { start: start.loc.start, end: end.loc.end },
             }
         }
         do {
@@ -611,7 +611,7 @@ class Parser {
         return {
             type: AST_TYPES.ArrayExpression,
             elements,
-            loc: { start: start.loc, end: end.loc },
+            loc: { start: start.loc.start, end: end.loc.end },
         }
 
     }

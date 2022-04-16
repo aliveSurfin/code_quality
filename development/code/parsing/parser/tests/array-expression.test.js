@@ -12,28 +12,14 @@ const testTable = [
                     "elements": [],
                     "loc": {
                         "start": {
-                            "start": {
-                                "cursor": 0,
-                                "column": 0,
-                                "line": 0
-                            },
-                            "end": {
-                                "cursor": 1,
-                                "column": 1,
-                                "line": 0
-                            }
+                            "cursor": 0,
+                            "column": 0,
+                            "line": 0
                         },
                         "end": {
-                            "start": {
-                                "cursor": 1,
-                                "column": 1,
-                                "line": 0
-                            },
-                            "end": {
-                                "cursor": 2,
-                                "column": 2,
-                                "line": 0
-                            }
+                            "cursor": 2,
+                            "column": 2,
+                            "line": 0
                         }
                     }
                 }
@@ -83,28 +69,14 @@ const testTable = [
                     ],
                     "loc": {
                         "start": {
-                            "start": {
-                                "cursor": 0,
-                                "column": 0,
-                                "line": 0
-                            },
-                            "end": {
-                                "cursor": 1,
-                                "column": 1,
-                                "line": 0
-                            }
+                            "cursor": 0,
+                            "column": 0,
+                            "line": 0
                         },
                         "end": {
-                            "start": {
-                                "cursor": 6,
-                                "column": 6,
-                                "line": 0
-                            },
-                            "end": {
-                                "cursor": 7,
-                                "column": 7,
-                                "line": 0
-                            }
+                            "cursor": 7,
+                            "column": 7,
+                            "line": 0
                         }
                     }
                 }
@@ -124,28 +96,14 @@ const testTable = [
                             "elements": [],
                             "loc": {
                                 "start": {
-                                    "start": {
-                                        "cursor": 1,
-                                        "column": 1,
-                                        "line": 0
-                                    },
-                                    "end": {
-                                        "cursor": 2,
-                                        "column": 2,
-                                        "line": 0
-                                    }
+                                    "cursor": 1,
+                                    "column": 1,
+                                    "line": 0
                                 },
                                 "end": {
-                                    "start": {
-                                        "cursor": 2,
-                                        "column": 2,
-                                        "line": 0
-                                    },
-                                    "end": {
-                                        "cursor": 3,
-                                        "column": 3,
-                                        "line": 0
-                                    }
+                                    "cursor": 3,
+                                    "column": 3,
+                                    "line": 0
                                 }
                             }
                         },
@@ -168,28 +126,14 @@ const testTable = [
                     ],
                     "loc": {
                         "start": {
-                            "start": {
-                                "cursor": 0,
-                                "column": 0,
-                                "line": 0
-                            },
-                            "end": {
-                                "cursor": 1,
-                                "column": 1,
-                                "line": 0
-                            }
+                            "cursor": 0,
+                            "column": 0,
+                            "line": 0
                         },
                         "end": {
-                            "start": {
-                                "cursor": 6,
-                                "column": 6,
-                                "line": 0
-                            },
-                            "end": {
-                                "cursor": 7,
-                                "column": 7,
-                                "line": 0
-                            }
+                            "cursor": 7,
+                            "column": 7,
+                            "line": 0
                         }
                     }
                 }

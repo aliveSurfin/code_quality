@@ -174,28 +174,18 @@ const testTable = [
                         ],
                         "loc": {
                             "start": {
-                                "start": {
-                                    "cursor": 0,
-                                    "column": 0,
-                                    "line": 0
-                                },
-                                "end": {
-                                    "cursor": 1,
-                                    "column": 1,
-                                    "line": 0
-                                }
+
+                                "cursor": 0,
+                                "column": 0,
+                                "line": 0
+
                             },
                             "end": {
-                                "start": {
-                                    "cursor": 6,
-                                    "column": 6,
-                                    "line": 0
-                                },
-                                "end": {
-                                    "cursor": 7,
-                                    "column": 7,
-                                    "line": 0
-                                }
+
+                                "cursor": 7,
+                                "column": 7,
+                                "line": 0
+
                             }
                         }
                     },
@@ -217,20 +207,164 @@ const testTable = [
                     },
                     "loc": {
                         "start": {
+                            "cursor": 0,
+                            "column": 0,
+                            "line": 0
+                        },
+                        "end": {
+                            "cursor": 10,
+                            "column": 10,
+                            "line": 0
+                        }
+                    }
+                }
+            }]
+        }
+    ],
+    [
+        `[1,2,3][0] = 2`, {
+            "type": "Program",
+            "body": [{
+                "type": "ExpressionStatement",
+                "expression": {
+                    "type": "AssignmentExpression",
+                    "operator": {
+                        "type": "ASSIGNMENT_OPERATOR",
+                        "value": "=",
+                        "loc": {
+                            "start": {
+                                "cursor": 11,
+                                "column": 11,
+                                "line": 0
+                            },
+                            "end": {
+                                "cursor": 12,
+                                "column": 12,
+                                "line": 0
+                            }
+                        }
+                    },
+                    "left": {
+                        "type": "MemberExpression",
+                        "computed": true,
+                        "object": {
+                            "type": "ArrayExpression",
+                            "elements": [{
+                                    "type": "NumericLiteral",
+                                    "value": 1,
+                                    "loc": {
+                                        "start": {
+                                            "cursor": 1,
+                                            "column": 1,
+                                            "line": 0
+                                        },
+                                        "end": {
+                                            "cursor": 2,
+                                            "column": 2,
+                                            "line": 0
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "NumericLiteral",
+                                    "value": 2,
+                                    "loc": {
+                                        "start": {
+                                            "cursor": 3,
+                                            "column": 3,
+                                            "line": 0
+                                        },
+                                        "end": {
+                                            "cursor": 4,
+                                            "column": 4,
+                                            "line": 0
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "NumericLiteral",
+                                    "value": 3,
+                                    "loc": {
+                                        "start": {
+                                            "cursor": 5,
+                                            "column": 5,
+                                            "line": 0
+                                        },
+                                        "end": {
+                                            "cursor": 6,
+                                            "column": 6,
+                                            "line": 0
+                                        }
+                                    }
+                                }
+                            ],
+                            "loc": {
+                                "start": {
+                                    "cursor": 0,
+                                    "column": 0,
+                                    "line": 0
+                                },
+                                "end": {
+                                    "cursor": 7,
+                                    "column": 7,
+                                    "line": 0
+                                }
+                            }
+                        },
+                        "property": {
+                            "type": "NumericLiteral",
+                            "value": 0,
+                            "loc": {
+                                "start": {
+                                    "cursor": 8,
+                                    "column": 8,
+                                    "line": 0
+                                },
+                                "end": {
+                                    "cursor": 9,
+                                    "column": 9,
+                                    "line": 0
+                                }
+                            }
+                        },
+                        "loc": {
                             "start": {
                                 "cursor": 0,
                                 "column": 0,
                                 "line": 0
                             },
                             "end": {
-                                "cursor": 1,
-                                "column": 1,
+                                "cursor": 10,
+                                "column": 10,
                                 "line": 0
                             }
+                        }
+                    },
+                    "right": {
+                        "type": "NumericLiteral",
+                        "value": 2,
+                        "loc": {
+                            "start": {
+                                "cursor": 13,
+                                "column": 13,
+                                "line": 0
+                            },
+                            "end": {
+                                "cursor": 14,
+                                "column": 14,
+                                "line": 0
+                            }
+                        }
+                    },
+                    "loc": {
+                        "start": {
+                            "cursor": 0,
+                            "column": 0,
+                            "line": 0
                         },
                         "end": {
-                            "cursor": 10,
-                            "column": 10,
+                            "cursor": 14,
+                            "column": 14,
                             "line": 0
                         }
                     }
