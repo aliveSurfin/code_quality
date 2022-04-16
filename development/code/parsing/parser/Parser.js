@@ -369,7 +369,57 @@ class Parser {
         return left
     }
     LeftHandSideExpression() {
-        return this.MemberExpression()
+        return this.CallMemberExpression()
+    }
+
+    CallMemberExpression() {
+        const member = this.MemberExpression()
+
+        if (this.lookahead.type === TOKEN_TYPES.PAREN_OPEN) {
+            return this.CallExpression(member)
+        }
+        return member
+
+    }
+    CallExpression(callee) {
+        let args = this.Arguments()
+        let call = {
+            type: AST_TYPES.CallExpression,
+            callee,
+            arguments: args.list,
+            loc: { start: callee.loc.start, end: args.loc.end }
+        }
+        if (this.lookahead.type === TOKEN_TYPES.PAREN_OPEN) {
+            call = this.CallExpression(call)
+        }
+        return call
+    }
+    Arguments() {
+        let start = this.eat(TOKEN_TYPES.PAREN_OPEN)
+        const argumentList = this.lookahead.type === TOKEN_TYPES.PAREN_CLOSE ? [] : this.ArgumentList();
+        let end = this.eat(TOKEN_TYPES.PAREN_CLOSE)
+
+        return {
+            list: argumentList,
+            loc: {
+                start: start.loc.start,
+                end: end.loc.end,
+            }
+        }
+    }
+    AddArgumentToListIfNotNull(list) {
+        let exp = this.AssignmentExpression()
+        if (exp != null) {
+            list.push(exp)
+        }
+        return list
+    }
+    ArgumentList() {
+        let list = []
+        do {
+            list = this.AddArgumentToListIfNotNull(list)
+        } while (this.lookahead.type === TOKEN_TYPES.COMMA && this.eat(TOKEN_TYPES.COMMA))
+        return list
     }
     MemberExpression() {
         let object = this.PrimaryExpression()

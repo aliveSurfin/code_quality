@@ -23,6 +23,7 @@ const AST_TYPES = {
     FunctionDeclaration: "FunctionDeclaration",
     ReturnStatement: "ReturnStatement",
     MemberExpression: "MemberExpression",
+    CallExpression: "CallExpression",
 
 };
 
