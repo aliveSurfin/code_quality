@@ -22,6 +22,7 @@ const AST_TYPES = {
     ForStatement: "ForStatement",
     FunctionDeclaration: "FunctionDeclaration",
     ReturnStatement: "ReturnStatement",
+    MemberExpression: "MemberExpression",
 
 };
 

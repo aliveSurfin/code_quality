@@ -369,7 +369,44 @@ class Parser {
         return left
     }
     LeftHandSideExpression() {
-        return this.PrimaryExpression()
+        return this.MemberExpression()
+    }
+    MemberExpression() {
+        let object = this.PrimaryExpression()
+        while (this.lookahead.type === TOKEN_TYPES.DOT || this.lookahead.type === TOKEN_TYPES.SQUARE_OPEN) {
+            if (this.lookahead.type === TOKEN_TYPES.DOT) {
+                let dotStart = this.eat(TOKEN_TYPES.DOT);
+                const property = this.Identifier()
+                object = {
+                    type: AST_TYPES.MemberExpression,
+                    computed: false,
+                    object,
+                    property,
+                    loc: {
+                        start: object.loc.start,
+                        end: property.loc.end,
+                    }
+                }
+
+            }
+            if (this.lookahead.type === TOKEN_TYPES.SQUARE_OPEN) {
+                let sqStart = this.eat(TOKEN_TYPES.SQUARE_OPEN);
+                const property = this.Expression()
+                let sqEnd = this.eat(TOKEN_TYPES.SQUARE_CLOSE);
+                object = {
+                    type: AST_TYPES.MemberExpression,
+                    computed: true,
+                    object,
+                    property,
+                    loc: {
+                        start: object.loc.start,
+                        end: sqEnd.loc.end,
+                    }
+                }
+
+            }
+        }
+        return object
     }
     Identifier() {
         const ident = this.eat(TOKEN_TYPES.IDENTIFIER)

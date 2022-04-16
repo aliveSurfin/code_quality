@@ -10,6 +10,8 @@ const TOKEN_SPEC = [
     [/^\(/, TOKEN_TYPES.PAREN_OPEN],
     [/^\)/, TOKEN_TYPES.PAREN_CLOSE],
     [/^,/, TOKEN_TYPES.COMMA],
+    [/^\./, TOKEN_TYPES.DOT],
+
     [/^\bif\b/, TOKEN_TYPES.IF],
     [/^\belse\b/, TOKEN_TYPES.ELSE],
     [/^\bvar\b/, TOKEN_TYPES.VARIABLE_DECLARATION],
