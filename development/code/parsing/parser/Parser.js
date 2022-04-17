@@ -39,9 +39,9 @@ class Parser {
     goNext() {
         this.lookahead = this.tokenizer.next()
     }
-    StatementList(stopLoookingPast = null) {
+    StatementList(stopLookingPast = null) {
         let list = this.addStatementIfNotNull([])
-        while (this.lookahead.type !== TOKEN_TYPES.EOF && this.lookahead.type !== stopLoookingPast) {
+        while (this.lookahead.type !== TOKEN_TYPES.EOF && this.lookahead.type !== stopLookingPast) {
             list = this.addStatementIfNotNull(list)
         }
         return list
@@ -72,6 +72,8 @@ class Parser {
                 return this.VariableStatement();
             case TOKEN_TYPES.FUNCTION_DECLARATION:
                 return this.FunctionDeclaration();
+            case TOKEN_TYPES.CLASS:
+                return this.ClassDeclaration();
             case TOKEN_TYPES.RETURN:
                 return this.ReturnStatement();
             case TOKEN_TYPES.WHILE:
@@ -86,11 +88,52 @@ class Parser {
         }
 
     }
+    ClassDeclaration() {
+        const start = this.eat(TOKEN_TYPES.CLASS);
+        const id = this.Identifier()
+        const superClass = this.lookahead.type === TOKEN_TYPES.EXTENDS ? this.ClassExtends() : null;
+        this.eat(TOKEN_TYPES.CURLY_OPEN)
+        const body = this.lookahead.type === TOKEN_TYPES.CURLY_CLOSE ? [] : this.ClassBody()
+        const end = this.eat(TOKEN_TYPES.CURLY_CLOSE)
+        return {
+            type: AST_TYPES.ClassDeclaration,
+            id,
+            superClass,
+            body,
+            loc: {
+                start: start.loc.start,
+                end: end.loc.end,
+            }
+        }
 
-    FunctionDeclaration() {
-        const start = this.eat(TOKEN_TYPES.FUNCTION_DECLARATION)
+    }
+    ClassExtends() {
+        this.eat(TOKEN_TYPES.EXTENDS)
+        return this.Identifier()
+    }
+    ClassBody() {
+        // return a list of class functions
+        let list = []
+        do {
+            if (this.lookahead.type === TOKEN_TYPES.NEWLINE) {
+                this.goNext()
+
+            } else {
+                list.push(this.FunctionDeclaration(true))
+            }
+        } while (this.lookahead.type !== TOKEN_TYPES.CURLY_CLOSE)
+        return list
+    }
+    FunctionDeclaration(ClassDeclaration = false) {
+        let start;
+        if (!ClassDeclaration) {
+            start = this.eat(TOKEN_TYPES.FUNCTION_DECLARATION)
+        }
+
         const name = this.Identifier()
-
+        if (ClassDeclaration) {
+            start = name;
+        }
         this.eat(TOKEN_TYPES.PAREN_OPEN)
 
         const params = this.lookahead.type === TOKEN_TYPES.PAREN_CLOSE ? [] : this.ParameterList()
@@ -373,6 +416,9 @@ class Parser {
     }
 
     CallMemberExpression() {
+        if (this.lookahead.type == TOKEN_TYPES.SUPER) {
+            return this.CallExpression(this.Super())
+        }
         const member = this.MemberExpression()
 
         if (this.lookahead.type === TOKEN_TYPES.PAREN_OPEN) {
@@ -606,6 +652,40 @@ class Parser {
                 return this.ParenthesesExpression()
             case TOKEN_TYPES.IDENTIFIER:
                 return this.Identifier()
+            case TOKEN_TYPES.THIS:
+                return this.ThisExpression()
+            case TOKEN_TYPES.NEW:
+                return this.NewExpression()
+            default:
+                throw new SyntaxError(`Unexpected primary expression of type: ${this.lookahead.type} : ${this.lookahead.value} at ${this.lookahead.loc.start.line}:${this.lookahead.loc.start.column}`)
+        }
+    }
+    NewExpression() {
+        const start = this.eat(TOKEN_TYPES.NEW)
+        const callee = this.MemberExpression()
+        const args = this.Arguments()
+        return {
+            type: AST_TYPES.NewExpression,
+            callee,
+            arguments: args,
+            loc: {
+                start: start.loc.start,
+                end: args.loc.end,
+            }
+        }
+    }
+    ThisExpression() {
+        const token = this.eat(TOKEN_TYPES.THIS)
+        return {
+            type: AST_TYPES.ThisExpression,
+            loc: token.loc,
+        }
+    }
+    Super() {
+        const token = this.eat(TOKEN_TYPES.SUPER)
+        return {
+            type: AST_TYPES.Super,
+            loc: token.loc
         }
     }
     isLiteral(type) {

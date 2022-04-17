@@ -11,7 +11,6 @@ const TOKEN_SPEC = [
     [/^\)/, TOKEN_TYPES.PAREN_CLOSE],
     [/^,/, TOKEN_TYPES.COMMA],
     [/^\./, TOKEN_TYPES.DOT],
-
     [/^\bif\b/, TOKEN_TYPES.IF],
     [/^\belse\b/, TOKEN_TYPES.ELSE],
     [/^\bvar\b/, TOKEN_TYPES.VARIABLE_DECLARATION],
@@ -25,7 +24,11 @@ const TOKEN_SPEC = [
     [/^\bfor\b/, TOKEN_TYPES.FOR],
     [/^\bfunction\b/, TOKEN_TYPES.FUNCTION_DECLARATION],
     [/^\breturn\b/, TOKEN_TYPES.RETURN],
-
+    [/^\bclass\b/, TOKEN_TYPES.CLASS],
+    [/^\bextends\b/, TOKEN_TYPES.EXTENDS],
+    [/^\bthis\b/, TOKEN_TYPES.THIS],
+    [/^\bsuper\b/, TOKEN_TYPES.SUPER],
+    [/^\bnew\b/, TOKEN_TYPES.NEW],
     [/^\[/, TOKEN_TYPES.SQUARE_OPEN],
     [/^\]/, TOKEN_TYPES.SQUARE_CLOSE],
     [/^\d+/, TOKEN_TYPES.NUMBER],

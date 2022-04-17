@@ -24,6 +24,10 @@ const AST_TYPES = {
     ReturnStatement: "ReturnStatement",
     MemberExpression: "MemberExpression",
     CallExpression: "CallExpression",
+    ClassDeclaration: "ClassDeclaration",
+    ThisExpression: "ThisExpression",
+    Super: "Super",
+    NewExpression: "NewExpression",
 
 };
 
