@@ -51,4 +51,24 @@
         background-color: #eee;
         color: #111;
     }
+    .autoComplete {
+        position: absolute;
+        z-index: 2;
+        font-size: 15pt;
+        font-family: 20pt;
+        line-height: 20pt;
+        pre {
+            border: 1px solid white;
+            padding: 0 !important;
+            margin: 0 !important;
+            display: grid;
+            grid-template-columns: auto;
+            code {
+                text-align: center;
+                &:first-child {
+                    text-decoration: underline !important;
+                }
+            }
+        }
+    }
 }
