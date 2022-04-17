@@ -1,3 +1,12 @@
+/**
+ *@module Tokenizer 
+ */
+
+/**
+ * Token Types
+ * 
+ * We define these token types to stop spelling errors messing up our parsing
+ */
 const TOKEN_TYPES = {
     EOF: "EOF", // END OF FILE
     WHITESPACE: "WHITESPACE",

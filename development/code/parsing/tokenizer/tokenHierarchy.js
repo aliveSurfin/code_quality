@@ -1,4 +1,14 @@
+/**
+ * @module Tokenizer
+ */
+
 import TOKEN_TYPES from "./TOKEN_CONST_TYPES.js";
+
+/**
+ * Token Spec
+ * 
+ * These are all the tokens we support
+ */
 const TOKEN_SPEC = [
     [/^\n/, TOKEN_TYPES.NEWLINE], // caught by below, must come before
     [/^\s/, TOKEN_TYPES.WHITESPACE],

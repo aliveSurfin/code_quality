@@ -1,15 +1,40 @@
+/**
+ * @module
+ * Parser
+ */
 import Tokenizer from "../tokenizer/Tokenizer.js"
 import ASTNode from "./ASTNode/ASTNode.js";
 import AST_TYPES from "./AST_CONST_TYPES.js";
 import TOKEN_TYPES from "../tokenizer/TOKEN_CONST_TYPES.js";
 import ParseSyntaxError from "./parser-error.js";
-import { isLiteral, isValidAssignmentTarget, isAssignmentOperator, BooleanTypeToValue } from "./parser-helper.js"
+import { isLiteral, isValidAssignmentTarget, isAssignmentOperator, BooleanTypeToValue, isEndOfStatementType } from "./parser-helper.js"
+
+/**
+ * Parser class
+ */
 class Parser {
+    /**
+     * @constructor
+     * @param {string} input Input Source string 
+     */
     constructor(input = "") {
         this.source = input
         this.tokenizer = new Tokenizer(input)
     }
 
+    /**
+     * Initial Parse Function
+     * 
+     * 
+     * Starts tokenizer and updates lookahead
+     * 
+     * 
+     * Starts parsing from Program
+     * 
+     * Attaches comments if available
+     * @param {string} input - Input string of source code
+     * @returns {object} - Program AST 
+     */
     parse(input) {
         this.source = input;
         this.tokenizer.update(this.source)
@@ -21,13 +46,25 @@ class Parser {
         return ast
     }
 
-
+    /**
+     * Program:
+     * 
+     *      -> StatementList
+     * @returns {object} Program AST
+     */
     Program() {
         return {
             type: AST_TYPES.Program,
             body: this.StatementList()
         }
     }
+
+    /**
+     * Consumes current lookahead token and returns it
+     * @param {string} type Token Type to attempt to eat 
+     * @throws {ParseSyntaxError} Errors if wrong token type found
+     * @returns {Object} Token of successfully eaten type
+     */
     eat(type) {
         const token = this.lookahead;
         /* istanbul ignore next */
@@ -38,9 +75,21 @@ class Parser {
         this.goNext()
         return token;
     }
+
+    /**
+     * Advance lookahead
+     */
     goNext() {
         this.lookahead = this.tokenizer.next()
     }
+
+    /**
+     * StatementList
+     * 
+     *      StatementList Statement -> Statement ...
+     * @param {string}[d=null] stopLookingPast 
+     * @returns {Object[]} Array of Statements
+     */
     StatementList(stopLookingPast = null) {
         let list = this.addStatementIfNotNull([])
         while (this.lookahead.type !== TOKEN_TYPES.EOF && this.lookahead.type !== stopLookingPast) {
@@ -48,6 +97,12 @@ class Parser {
         }
         return list
     }
+
+    /**
+     * Attempt to parse statement and add to list if not null
+     * @param {Array} list StatementList
+     * @returns {Array} StatementList
+     */
     addStatementIfNotNull(list) {
         const statement = this.Statement()
         if (statement != null) {
@@ -55,6 +110,24 @@ class Parser {
         }
         return list
     }
+
+    /**
+     * Statement 
+     * 
+     *      : ExpressionStatement
+     *      | ForStatement
+     *      | DoWhileStatement
+     *      | WhileStatement
+     *      | ReturnStatement
+     *      | ClassDeclaration
+     *      | FunctionDeclaration
+     *      | VariableStatement
+     *      | BlockStatement
+     *      | IfStatement       
+     *      | null : EOF | SEMI_COLON | NEWLINE
+     *      
+     * @returns {Object} Statement
+     */
     Statement() {
         if (this.lookahead.type === TOKEN_TYPES.EOF) {
             return null
@@ -90,6 +163,14 @@ class Parser {
         }
 
     }
+
+    /**
+     * ClassDeclaration
+     * 
+     *      ClassToken ?ExtendsStatement ClassBody
+     *  
+     * @returns {Object} ClassDeclaration
+     */
     ClassDeclaration() {
         const start = this.eat(TOKEN_TYPES.CLASS);
         const id = this.Identifier()
@@ -109,10 +190,25 @@ class Parser {
         }
 
     }
+
+    /**
+     * Extends Helper
+     * 
+     *  Eats ExtendsToken and returns Identifier
+     * @returns {Object} Identifier
+     */
     ClassExtends() {
         this.eat(TOKEN_TYPES.EXTENDS)
         return this.Identifier()
     }
+
+    /**
+     * ClassBody Helper
+     * 
+     *      ClassFunctionDeclarationList:
+     *          : ClassFunctionDeclaration ...
+     * @returns {Array} List of ClassFunctionDeclaration 
+     */
     ClassBody() {
         // return a list of class functions
         let list = []
@@ -126,6 +222,14 @@ class Parser {
         } while (this.lookahead.type !== TOKEN_TYPES.CURLY_CLOSE)
         return list
     }
+
+    /**
+     * FunctionDeclaration
+     * 
+     *      ?FunctionToken Identifier Parameters BlockStatement
+     * @param {boolean} ClassDeclaration Is it a class function?
+     * @returns {Object} FunctionDeclaration
+     */
     FunctionDeclaration(ClassDeclaration = false) {
         let start;
         if (!ClassDeclaration) {
@@ -155,6 +259,11 @@ class Parser {
         }
 
     }
+
+    /**
+     * Parameter helper
+     * @returns {Array} list of parameters
+     */
     ParameterList() {
         const params = [];
 
@@ -164,9 +273,16 @@ class Parser {
 
         return params
     }
+
+    /**
+     * ReturnStatement
+     * 
+     *      : ReturnToken Argument(Expression)
+     * @returns {Object} ReturnStatement
+     */
     ReturnStatement() {
         const start = this.eat(TOKEN_TYPES.RETURN)
-        const argument = (this.isEndOfStatementType(this.lookahead) || this.lookahead.type === TOKEN_TYPES.CURLY_CLOSE) ? null : this.Expression()
+        const argument = (isEndOfStatementType(this.lookahead) || this.lookahead.type === TOKEN_TYPES.CURLY_CLOSE) ? null : this.Expression()
         let end = argument
         if (this.lookahead.type !== TOKEN_TYPES.CURLY_CLOSE) {
             end = this.eatEndOfStatement()
@@ -184,6 +300,13 @@ class Parser {
             }
         }
     }
+
+    /**
+     * WhileStatement
+     * 
+     *      :WhileToken ParenOpen test(Expression) ParenClose body(Statement)
+     * @returns {Object} WhileStatement
+     */
     WhileStatement() {
         const start = this.eat(TOKEN_TYPES.WHILE)
         this.eat(TOKEN_TYPES.PAREN_OPEN)
@@ -200,6 +323,13 @@ class Parser {
             }
         }
     }
+
+    /**
+     * ForStatement
+     * 
+     *      :ForToken ParenOpen ForStatementInit test(Expression) update(Expression) ParenClose body(Statement)
+     * @returns {Object} ForStatement
+     */
     ForStatement() {
         const start = this.eat(TOKEN_TYPES.FOR);
         this.eat(TOKEN_TYPES.PAREN_OPEN)
@@ -225,12 +355,26 @@ class Parser {
         }
     }
 
+    /**
+     * ForStatementInit
+     * 
+     *      : VariableStatementInit
+     *      | Expression
+     * @returns {Object} ForStatementInit
+     */
     ForStatementInit() {
         if (this.lookahead.type === TOKEN_TYPES.VARIABLE_DECLARATION) {
             return this.VariableStatementInit()
         }
         return this.Expression()
     }
+
+    /**
+     * DoWhileStatement
+     * 
+     *      :DoToken body(Statement) WhileToken ParenOpen test(Expression) ParenClose 
+     * @returns {Object} DoWhileStatement
+     */
     DoWhileStatement() {
         const start = this.eat(TOKEN_TYPES.DO)
 
@@ -251,7 +395,12 @@ class Parser {
     }
 
 
-
+    /**
+     * IfStatement
+     * 
+     *      : IfToken ParenOpen test(Expression) ParenClose Statement ?ElseToken ?Statement
+     * @returns {Object} IfStatement
+     */
     IfStatement() {
         const if_start = this.eat(TOKEN_TYPES.IF)
         const testStart = this.eat(TOKEN_TYPES.PAREN_OPEN)
@@ -274,6 +423,12 @@ class Parser {
             }
         }
     }
+
+    /**
+     * Attempts to eat all possible end of statement types : NEWLINE | SEMI_COLON | EOF
+     * @throws {ParseSyntaxError}
+     * @returns {Object} NewlineToken | SemiColonToken | EOFToken
+     */
     eatEndOfStatement() {
 
         // we eat newline safely, if no newline there MUST be a semi colon, which the error message for is more indicative
@@ -288,6 +443,12 @@ class Parser {
         }
     }
 
+    /**
+     * VariableStatementInit
+     * 
+     *      : VariableDeclarationToken declarations(VariableDeclarationsList)
+     * @returns {Object} VariableStatementInit
+     */
     VariableStatementInit() {
         const token = this.eat(TOKEN_TYPES.VARIABLE_DECLARATION);
         const declarations = this.VariableDeclarationList();
@@ -300,6 +461,13 @@ class Parser {
             }
         }
     }
+
+    /**
+     * VariableStatement
+     * 
+     *      :VariableDeclarationToken declarations(VariableDeclarationsList) EndOfStatementToken
+     * @returns {Object} VariableStatement
+     */
     VariableStatement() {
         const token = this.eat(TOKEN_TYPES.VARIABLE_DECLARATION);
         const declarations = this.VariableDeclarationList();
@@ -314,6 +482,12 @@ class Parser {
         }
     }
 
+    /**
+     * VariableDeclarationList
+     * 
+     *      : VariableDeclaration ...
+     * @returns {Array} VariableDeclarationList
+     */
     VariableDeclarationList() {
         const declarations = []
 
@@ -324,12 +498,16 @@ class Parser {
 
         return declarations
     }
-    isEndOfStatementType(type) {
-        return type === TOKEN_TYPES.SEMI_COLON || type === TOKEN_TYPES.NEWLINE;
-    }
+
+    /**
+     * VariableDeclaration
+     * 
+     *      :Identifier ?init(VariableInit)
+     * @returns {Object} VariableDeclaration
+     */
     VariableDeclaration() {
         const id = this.Identifier()
-        const init = !this.isEndOfStatementType(this.lookahead.type) && this.lookahead.type !== TOKEN_TYPES.COMMA ?
+        const init = !isEndOfStatementType(this.lookahead.type) && this.lookahead.type !== TOKEN_TYPES.COMMA ?
             this.VariableInit() : null;
         const loc = {
             start: id.loc.start,
@@ -343,10 +521,23 @@ class Parser {
         }
     }
 
+    /**
+     * VariableInit
+     * 
+     *      : AssignmentOperatorToken AssignmentExpression
+     * @returns {Object} AssignmentExpression
+     */
     VariableInit() {
         this.eat(TOKEN_TYPES.ASSIGNMENT_OPERATOR)
         return this.AssignmentExpression()
     }
+
+    /**
+     * BlockStatement
+     * 
+     *      : CurlyOpen ?body(StatementList) CurlyClose
+     * @returns {Object} BlockStatement
+     */
     BlockStatement() {
         const start = this.eat(TOKEN_TYPES.CURLY_OPEN);
         // if the next token is a }, we have an empty block
@@ -363,6 +554,11 @@ class Parser {
             }
         }
     }
+
+    /**
+     * Links Statements to Expressions - Statement Containing Expression
+     * @returns {Object} Expression
+     */
     ExpressionStatement() {
         const expression = this.Expression()
         this.eatEndOfStatement();
@@ -372,9 +568,22 @@ class Parser {
             expression
         }
     }
+
+    /**
+     * Starts the Expression Downwards Propagation 
+     * @returns {Object} AssignmentExpression
+     */
     Expression() {
         return this.AssignmentExpression()
     }
+
+    /**
+     * AssignmentExpression
+     * 
+     *      : LogicalOrExpression AssignmentOperator AssignmentExpression
+     *      | LogicalOrExpression
+     * @returns {Object} AssignmentExpression | LogicalOrExpression
+     */
     AssignmentExpression() {
         const left = this.LogicalOrExpression()
         if (!isAssignmentOperator(this.lookahead.type)) {
@@ -394,6 +603,87 @@ class Parser {
         }
         return returnObj;
     }
+
+    /**
+     * LogicalOrExpression
+     * 
+     *      :LogicalAndExpression
+     *      |LogicalAndExpression LogicalOrOperator LogicalAndExpression
+     * @returns {Object} LogicalExpression
+     */
+    LogicalOrExpression() {
+        let left = this.LogicalAndExpression()
+        while (this.lookahead.type !== TOKEN_TYPES.EOF && this.lookahead.type === TOKEN_TYPES.LOGICAL_OR_OPERATOR) {
+            const operator = this.eat(TOKEN_TYPES.LOGICAL_OR_OPERATOR)
+            const right = this.LogicalAndExpression()
+            left = {
+                type: AST_TYPES.LogicalExpression,
+                operator,
+                left,
+                right,
+                loc: { start: left.loc.start, end: right.loc.end },
+            }
+        }
+        return left
+    }
+
+    /**
+     * LogicalAndExpression
+     * 
+     *      :EqualityExpression
+     *      |EqualityExpression LogicalAndOperator EqualityExpression
+     * @returns {Object} EqualityExpression | LogicalExpression
+     */
+    LogicalAndExpression() {
+        let left = this.EqualityExpression()
+        while (this.lookahead.type !== TOKEN_TYPES.EOF && this.lookahead.type === TOKEN_TYPES.LOGICAL_AND_OPERATOR) {
+            const operator = this.eat(TOKEN_TYPES.LOGICAL_AND_OPERATOR)
+            const right = this.EqualityExpression()
+            left = {
+                type: AST_TYPES.LogicalExpression,
+                operator,
+                left,
+                right,
+                loc: { start: left.loc.start, end: right.loc.end },
+            }
+        }
+        return left
+    }
+
+    /**
+     * EqualityExpression
+     * 
+     *      :RelationalExpression
+     *      |RelationalExpressionEqualityOperator RelationalExpression
+     * @returns {Object} EqualityExpression | BinaryExpression
+     */
+    EqualityExpression() {
+        let left = this.RelationalExpression()
+
+        while (this.lookahead.type !== TOKEN_TYPES.EOF && this.lookahead.type === TOKEN_TYPES.EQUALITY_OPERATOR) {
+            const operator = this.eat(TOKEN_TYPES.EQUALITY_OPERATOR)
+            const right = this.RelationalExpression()
+            left = {
+                type: AST_TYPES.EqualityExpression,
+                operator,
+                left,
+                right,
+                loc: {
+                    start: left.loc.start,
+                    end: right.loc.end,
+                }
+            }
+        }
+        return left
+    }
+
+    /**
+     * RelationalExpression
+     * 
+     *      :ArithmeticExpression
+     *      |ArithmeticExpression RelationalOperator ArithmeticExpression
+     * @returns {Object} BinaryExpression
+     */
     RelationalExpression() {
         let left = this.ArithmeticExpression()
 
@@ -413,10 +703,104 @@ class Parser {
         }
         return left
     }
-    LeftHandSideExpression() {
+
+    /**
+     * ArithmeticExpression
+     * 
+     *      :MultiplicativeExpression
+     *      |MultiplicativeExpression ArithmeticOperator MultiplicativeExpression
+     * @returns {Object} BinaryExpression 
+     */
+    ArithmeticExpression() {
+
+        let left = this.MultiplicativeExpression()
+        while (this.lookahead.type !== TOKEN_TYPES.EOF && this.lookahead.type === TOKEN_TYPES.ARITHMETIC_OPERATOR) {
+            const operator = this.eat(TOKEN_TYPES.ARITHMETIC_OPERATOR)
+            const right = this.MultiplicativeExpression()
+            left = {
+                type: AST_TYPES.BinaryExpression,
+                operator,
+                left,
+                right,
+                loc: {
+                    start: left.loc.start,
+                    end: right.loc.end,
+                }
+            }
+        }
+        return left;
+
+    }
+
+    /**
+     * MultiplicativeExpression
+     * 
+     *      :UnaryExpression
+     *      |UnaryExpression MultiplicativeExpression UnaryExpression
+     * @returns {Object} BinaryExpression 
+     */
+    MultiplicativeExpression() {
+        let left = this.UnaryExpression()
+        while (this.lookahead.type !== TOKEN_TYPES.EOF && this.lookahead.type === TOKEN_TYPES.MULTIPLICATIVE_OPERATOR) {
+            const operator = this.eat(TOKEN_TYPES.MULTIPLICATIVE_OPERATOR)
+            const right = this.UnaryExpression()
+            left = {
+                type: AST_TYPES.BinaryExpression,
+                operator,
+                left,
+                right,
+                loc: {
+                    start: left.loc.start,
+                    end: right.loc.end,
+                }
+            }
+        }
+        return left;
+    }
+
+    /**
+     * UnaryExpression
+     * 
+     *      :(ArithmeticOperatorToken|LogicalNotOperatorToken) UnaryExpression
+     *      |CallMemberExpression
+     * @returns {Object} CallMemberExpression | UnaryExpression 
+     */
+    UnaryExpression() {
+        let operator;
+        switch (this.lookahead.type) {
+            case TOKEN_TYPES.ARITHMETIC_OPERATOR:
+                operator = this.eat(TOKEN_TYPES.ARITHMETIC_OPERATOR)
+                break;
+            case TOKEN_TYPES.LOGICAL_NOT_OPERATOR:
+                operator = this.eat(TOKEN_TYPES.LOGICAL_NOT_OPERATOR)
+                break;
+
+        }
+        if (operator != null) {
+            const argument = this.UnaryExpression()
+            return {
+                type: AST_TYPES.UnaryExpression,
+                operator,
+                argument,
+                loc: {
+                    start: operator.loc.start,
+                    end: argument.loc.end,
+                }
+
+            }
+        }
         return this.CallMemberExpression()
     }
 
+
+    /**
+     * CallMemberExpression
+     * 
+     *      :SuperCallExpression
+     *      |MemberExpression
+     *      |CallExpression(MemberExpression)
+     * @returns {Object} CallExpression | MemberExpression
+     */
     CallMemberExpression() {
         if (this.lookahead.type == TOKEN_TYPES.SUPER) {
             return this.CallExpression(this.Super())
@@ -429,6 +813,15 @@ class Parser {
         return member
 
     }
+
+    /**
+     * CallExpression
+     * 
+     *      :CallExpression
+     *      |CallExpression(CallExpression)
+     * @param {Object} callee - Callee of CallExpression 
+     * @returns {Object} CallExpression
+     */
     CallExpression(callee) {
         let args = this.Arguments()
         let call = {
@@ -442,6 +835,14 @@ class Parser {
         }
         return call
     }
+
+    /**
+     * Arguments
+     * 
+     *      :ArgumentList
+     *      
+     * @returns {Object} Arguments
+     */
     Arguments() {
         let start = this.eat(TOKEN_TYPES.PAREN_OPEN)
         const argumentList = this.lookahead.type === TOKEN_TYPES.PAREN_CLOSE ? [] : this.ArgumentList();
@@ -455,13 +856,14 @@ class Parser {
             }
         }
     }
-    AddArgumentToListIfNotNull(list) {
-        let exp = this.AssignmentExpression()
-        if (exp != null) {
-            list.push(exp)
-        }
-        return list
-    }
+
+    /**
+     * ArgumentList
+     * 
+     *      :AssignmentExpression
+     *      |ArgumentList AssignmentExpression
+     * @returns {Array} ArgumentList
+     */
     ArgumentList() {
         let list = []
         do {
@@ -469,6 +871,32 @@ class Parser {
         } while (this.lookahead.type === TOKEN_TYPES.COMMA && this.eat(TOKEN_TYPES.COMMA))
         return list
     }
+
+    /**
+     * Helper func that adds to argument list if resulting expression is not null
+     * 
+     * @param {Array} list - ArgumentList 
+     * @returns {Array} ArgumentList
+     */
+    AddArgumentToListIfNotNull(list) {
+        let exp = this.AssignmentExpression()
+        if (exp != null) {
+            list.push(exp)
+        }
+        return list
+    }
+
+    /**
+     * MemberExpression
+     * 
+     *      :PrimaryExpression
+     *      |DotToken Identifier
+     *      |DotToken Identifier MemberExpression
+     *      |SqOpenToken Expression SqCloseToken
+     *      |SqOpenToken Expression SqCloseToken MemberExpression
+     *      |
+     * @returns {Object} MemberExpression | PrimaryExpression
+     */
     MemberExpression() {
         let object = this.PrimaryExpression()
         while (this.lookahead.type === TOKEN_TYPES.DOT || this.lookahead.type === TOKEN_TYPES.SQUARE_OPEN) {
@@ -506,6 +934,12 @@ class Parser {
         }
         return object
     }
+
+    /**
+     * Identifier
+     *      :Identifier
+     * @returns {Object} Identifier
+     */
     Identifier() {
         const ident = this.eat(TOKEN_TYPES.IDENTIFIER)
         return {
@@ -516,126 +950,35 @@ class Parser {
 
     }
 
-
+    /**
+     * AssignmentOperator
+     * 
+     *      :AssignmentOperator
+     *      |AssignmentComboOperator
+     * @returns {Object} AssignmentComboOperator | AssignmentOperator
+     */
     AssignmentOperator() {
         if (this.lookahead.type === TOKEN_TYPES.ASSIGNMENT_OPERATOR) {
             return this.eat(TOKEN_TYPES.ASSIGNMENT_OPERATOR)
         }
         return this.eat(TOKEN_TYPES.ASSIGNMENT_COMBO_OPERATOR)
     }
-    LogicalOrExpression() {
-        let left = this.LogicalAndExpression()
-        while (this.lookahead.type !== TOKEN_TYPES.EOF && this.lookahead.type === TOKEN_TYPES.LOGICAL_OR_OPERATOR) {
-            const operator = this.eat(TOKEN_TYPES.LOGICAL_OR_OPERATOR)
-            const right = this.LogicalAndExpression()
-            left = {
-                type: 'LogicalExpression',
-                operator,
-                left,
-                right,
-                loc: { start: left.loc.start, end: right.loc.end },
-            }
-        }
-        return left
-    }
-    LogicalAndExpression() {
-        let left = this.EqualityExpression()
-        while (this.lookahead.type !== TOKEN_TYPES.EOF && this.lookahead.type === TOKEN_TYPES.LOGICAL_AND_OPERATOR) {
-            const operator = this.eat(TOKEN_TYPES.LOGICAL_AND_OPERATOR)
-            const right = this.EqualityExpression()
-            left = {
-                type: 'LogicalExpression',
-                operator,
-                left,
-                right,
-                loc: { start: left.loc.start, end: right.loc.end },
-            }
-        }
-        return left
-    }
-    EqualityExpression() {
-        let left = this.RelationalExpression()
 
-        while (this.lookahead.type !== TOKEN_TYPES.EOF && this.lookahead.type === TOKEN_TYPES.EQUALITY_OPERATOR) {
-            const operator = this.eat(TOKEN_TYPES.EQUALITY_OPERATOR)
-            const right = this.RelationalExpression()
-            left = {
-                type: AST_TYPES.EqualityExpression,
-                operator,
-                left,
-                right,
-                loc: {
-                    start: left.loc.start,
-                    end: right.loc.end,
-                }
-            }
-        }
-        return left
-    }
-    ArithmeticExpression() {
-
-        let left = this.MultiplicativeExpression()
-        while (this.lookahead.type !== TOKEN_TYPES.EOF && this.lookahead.type === TOKEN_TYPES.ARITHMETIC_OPERATOR) {
-            const operator = this.eat(TOKEN_TYPES.ARITHMETIC_OPERATOR)
-            const right = this.MultiplicativeExpression()
-            left = {
-                type: AST_TYPES.BinaryExpression,
-                operator,
-                left,
-                right,
-                loc: {
-                    start: left.loc.start,
-                    end: right.loc.end,
-                }
-            }
-        }
-        return left;
-
-    }
-    MultiplicativeExpression() {
-        let left = this.UnaryExpression()
-        while (this.lookahead.type !== TOKEN_TYPES.EOF && this.lookahead.type === TOKEN_TYPES.MULTIPLICATIVE_OPERATOR) {
-            const operator = this.eat(TOKEN_TYPES.MULTIPLICATIVE_OPERATOR)
-            const right = this.UnaryExpression()
-            left = {
-                type: AST_TYPES.BinaryExpression,
-                operator,
-                left,
-                right,
-                loc: {
-                    start: left.loc.start,
-                    end: right.loc.end,
-                }
-            }
-        }
-        return left;
-    }
-    UnaryExpression() {
-        let operator;
-        switch (this.lookahead.type) {
-            case TOKEN_TYPES.ARITHMETIC_OPERATOR:
-                operator = this.eat(TOKEN_TYPES.ARITHMETIC_OPERATOR)
-                break;
-            case TOKEN_TYPES.LOGICAL_NOT_OPERATOR:
-                operator = this.eat(TOKEN_TYPES.LOGICAL_NOT_OPERATOR)
-                break;
-
-        }
-        if (operator != null) {
-            const argument = this.UnaryExpression()
-            return {
-                type: AST_TYPES.UnaryExpression,
-                operator,
-                argument,
-                loc: {
-                    start: operator.loc.start,
-                    end: argument.loc.end,
-                }
-
-            }
-        }
-        return this.LeftHandSideExpression()
-    }
+    /**   
+     * The main expression propagation function
+     * 
+     * PrimaryExpression
+     * 
+     *      :Literal
+     *      |ArrayExpression
+     *      |ParenthesesExpression
+     *      |Identifier
+     *      |ThisExpression
+     *      |NewExpression
+     * 
+     * @throws {ParseSyntaxError} Throws ParseSyntaxError on unidentified expression
+     * @returns {Object} Literal|ArrayExpression|ParenthesesExpression|Identifier|ThisExpression|NewExpression
+     */
     PrimaryExpression() {
         if (isLiteral(this.lookahead.type)) {
             return this.Literal()
@@ -655,6 +998,13 @@ class Parser {
                 throw new ParseSyntaxError(`Unexpected primary expression of type: ${this.lookahead.type} : ${this.lookahead.value} at ${this.lookahead.loc.start.line}:${this.lookahead.loc.start.column}`, this.lookahead)
         }
     }
+
+    /**
+     * NewExpression
+     * 
+     *      :NewToken MemberExpression Arguments
+     * @returns {Object} NewExpression
+     */
     NewExpression() {
         const start = this.eat(TOKEN_TYPES.NEW)
         const callee = this.MemberExpression()
@@ -669,6 +1019,13 @@ class Parser {
             }
         }
     }
+
+    /**
+     * ThisExpression
+     * 
+     *      :ThisToken
+     * @returns {Object} ThisExpression
+     */
     ThisExpression() {
         const token = this.eat(TOKEN_TYPES.THIS)
         return {
@@ -676,6 +1033,12 @@ class Parser {
             loc: token.loc,
         }
     }
+
+    /**
+     * Super
+     *      :SuperToken
+     * @returns {Object} Super
+     */
     Super() {
         const token = this.eat(TOKEN_TYPES.SUPER)
         return {
@@ -684,6 +1047,12 @@ class Parser {
         }
     }
 
+    /**
+     * ParenthesesExpression
+     * 
+     *      :ParenOpenToken Expression ParenCloseToken
+     * @returns {Object} Expression
+     */
     ParenthesesExpression() {
         this.eat(TOKEN_TYPES.PAREN_OPEN);
         const expression = this.Expression()
@@ -691,6 +1060,20 @@ class Parser {
 
         return expression
     }
+
+    /**
+     * Literal propretor 
+     * 
+     * Literal
+     * 
+     *      :NumericLiteral
+     *      :StringLiteral
+     *      :BooleanLiteral
+     *      :NullLiteral
+     * 
+     * @throws {ParseSyntaxError} Throws error on unexpected literal production
+     * @returns {Object} Literal 
+     */
     Literal() {
         switch (this.lookahead.type) {
             case TOKEN_TYPES.NUMBER:
@@ -711,6 +1094,15 @@ class Parser {
         /* istanbul ignore next */
         throw new ParseSyntaxError(`Unexpected literal production of type: ${type} ${loc}`, this.lookahead);
     }
+
+    /**
+     * ArrayExpression
+     * 
+     *      :SqOpenToken SqCloseToken
+     *      :SqOpenToken PrimaryExpression SqCloseToken
+     *      :SqOpenToken (PrimaryExpression CommaToken PrimaryExpression) ... SqCloseToken
+     * @returns {Object} ArrayExpression
+     */
     ArrayExpression() {
         const start = this.eat(TOKEN_TYPES.SQUARE_OPEN);
         const elements = []
@@ -734,6 +1126,12 @@ class Parser {
 
     }
 
+    /**
+     * BooleanLiteral
+     * 
+     * @param {Object} type BooleanToken 
+     * @returns {Object} BooleanLiteral
+     */
     BooleanLiteral(type) {
         const loc = this.eat(type).loc;
         return {
@@ -743,6 +1141,12 @@ class Parser {
 
         }
     }
+
+    /**
+     * NullLiteral
+     * 
+     * @returns {Object} NullLiteral
+     */
     NullLiteral() {
         const loc = this.eat(TOKEN_TYPES.NULL).loc
         return {
@@ -752,11 +1156,22 @@ class Parser {
         }
     }
 
+    /**
+     * NumericLiteral
+     * 
+     * @returns {Object} NumericLiteral
+     */
     NumericLiteral() {
         const token = this.eat(TOKEN_TYPES.NUMBER)
         return ASTNode({ token, type: AST_TYPES.NumericLiteral, value: Number(token.value) })
 
     }
+
+    /**
+     * StringLiteral
+     * 
+     * @returns {Object} StringLiteral
+     */
     StringLiteral() {
         const token = this.eat(TOKEN_TYPES.STRING)
         return ASTNode({ token, type: AST_TYPES.StringLiteral, value: token.value.slice(1, -1) })

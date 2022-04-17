@@ -1,3 +1,9 @@
+/**
+ * @module Parser
+ */
+/**
+ * Abstract Syntax Tree Types
+ */
 const AST_TYPES = {
     Program: 'Program',
     VariableStatement: "VariableStatement",
@@ -28,6 +34,7 @@ const AST_TYPES = {
     ThisExpression: "ThisExpression",
     Super: "Super",
     NewExpression: "NewExpression",
+    LogicalExpression: "LogicalExpression",
 
 };
 
