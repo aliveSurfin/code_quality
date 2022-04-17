@@ -2,6 +2,8 @@ import Tokenizer from "../tokenizer/Tokenizer.js"
 import ASTNode from "./ASTNode/ASTNode.js";
 import AST_TYPES from "./AST_CONST_TYPES.js";
 import TOKEN_TYPES from "../tokenizer/TOKEN_CONST_TYPES.js";
+import ParseSyntaxError from "./parser-error.js";
+import { isLiteral, isValidAssignmentTarget, isAssignmentOperator, BooleanTypeToValue } from "./parser-helper.js"
 class Parser {
     constructor(input = "") {
         this.source = input
@@ -30,8 +32,8 @@ class Parser {
         const token = this.lookahead;
         /* istanbul ignore next */
         if (token.type !== type) {
-            throw new SyntaxError(
-                `Unexpected token "${token.value}" at ${JSON.stringify(this.tokenizer.position())}, expected: ${type}`)
+            throw new ParseSyntaxError(
+                `Unexpected token "${token.value}" at ${JSON.stringify(this.tokenizer.position())}, expected: ${type}`, token)
         }
         this.goNext()
         return token;
@@ -375,14 +377,14 @@ class Parser {
     }
     AssignmentExpression() {
         const left = this.LogicalOrExpression()
-        if (!this.isAssignmentOperator(this.lookahead.type)) {
+        if (!isAssignmentOperator(this.lookahead.type)) {
             return left
         }
 
         let returnObj = {
             type: AST_TYPES.AssignmentExpression,
             operator: this.AssignmentOperator(),
-            left: this.checkValidAssignmentTarget(left),
+            left: isValidAssignmentTarget(left),
             right: this.AssignmentExpression(),
 
         }
@@ -513,15 +515,8 @@ class Parser {
         }
 
     }
-    checkValidAssignmentTarget(node) {
-        if (node.type === AST_TYPES.Identifier || node.type == AST_TYPES.MemberExpression) {
-            return node
-        }
-        throw new SyntaxError(`Incorrect assignment to type: ${node.type} : ${node.value} | ${node.loc.start.line}:${node.loc.start.column}`)
-    }
-    isAssignmentOperator(type) {
-        return type === TOKEN_TYPES.ASSIGNMENT_OPERATOR || type === TOKEN_TYPES.ASSIGNMENT_COMBO_OPERATOR;
-    }
+
+
     AssignmentOperator() {
         if (this.lookahead.type === TOKEN_TYPES.ASSIGNMENT_OPERATOR) {
             return this.eat(TOKEN_TYPES.ASSIGNMENT_OPERATOR)
@@ -642,7 +637,7 @@ class Parser {
         return this.LeftHandSideExpression()
     }
     PrimaryExpression() {
-        if (this.isLiteral(this.lookahead.type)) {
+        if (isLiteral(this.lookahead.type)) {
             return this.Literal()
         }
         switch (this.lookahead.type) {
@@ -657,7 +652,7 @@ class Parser {
             case TOKEN_TYPES.NEW:
                 return this.NewExpression()
             default:
-                throw new SyntaxError(`Unexpected primary expression of type: ${this.lookahead.type} : ${this.lookahead.value} at ${this.lookahead.loc.start.line}:${this.lookahead.loc.start.column}`)
+                throw new ParseSyntaxError(`Unexpected primary expression of type: ${this.lookahead.type} : ${this.lookahead.value} at ${this.lookahead.loc.start.line}:${this.lookahead.loc.start.column}`, this.lookahead)
         }
     }
     NewExpression() {
@@ -688,14 +683,7 @@ class Parser {
             loc: token.loc
         }
     }
-    isLiteral(type) {
-        return type !== TOKEN_TYPES.EOF && (
-            type === TOKEN_TYPES.NUMBER ||
-            type === TOKEN_TYPES.STRING ||
-            type === TOKEN_TYPES.TRUE ||
-            type === TOKEN_TYPES.FALSE ||
-            type === TOKEN_TYPES.NULL);
-    }
+
     ParenthesesExpression() {
         this.eat(TOKEN_TYPES.PAREN_OPEN);
         const expression = this.Expression()
@@ -721,7 +709,7 @@ class Parser {
         /* istanbul ignore next */
         const type = this.lookahead == null ? "unknown" : `"${this.lookahead.type}"`;
         /* istanbul ignore next */
-        throw new SyntaxError(`Unexpected literal production of type: ${type} ${loc}`);
+        throw new ParseSyntaxError(`Unexpected literal production of type: ${type} ${loc}`, this.lookahead);
     }
     ArrayExpression() {
         const start = this.eat(TOKEN_TYPES.SQUARE_OPEN);
@@ -745,23 +733,12 @@ class Parser {
         }
 
     }
-    BooleanTypeToValue(type) {
-        switch (type) {
-            case TOKEN_TYPES.TRUE:
-                return true;
-            case TOKEN_TYPES.FALSE:
-                return false;
-                /* istanbul ignore next */
-            default:
-                /* istanbul ignore next */
-                throw new SyntaxError(`Unexpected token in boolean production "${type}"`)
-        }
-    }
+
     BooleanLiteral(type) {
         const loc = this.eat(type).loc;
         return {
             type: AST_TYPES.BooleanLiteral,
-            value: this.BooleanTypeToValue(type),
+            value: BooleanTypeToValue(type),
             loc,
 
         }
