@@ -9,23 +9,17 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(
     import.meta.url);
 const __dirname = path.dirname(__filename);
-import Parser from './parsing/parser/Parser.js';
-
+import Evaluate from "./parsing/evaluate/evaluate.js"
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/api/hello', (req, res) => {
-    const parser = new Parser()
-    res.send({ express: 'Hello From Express', test: parser.parse("test;") });
+app.get('/api/ping', (req, res) => {
+
+    res.send({ alive: true });
 });
 
-app.post('/api/test', (req, res) => {
-    console.log(req.body);
-
-    console.log()
-    res.send(
-        `Post received : body =  ${req.body.post}`,
-    );
+app.post('/api/analysis', (req, res) => {
+    res.send(Evaluate(req.body.post));
 });
 
 if (process.env.NODE_ENV === 'production') {

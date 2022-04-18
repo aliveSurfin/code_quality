@@ -1,5 +1,7 @@
+@import '../../styles/colours';
 .wrapper {
     position: relative;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template: "code analysis" min-content "code analysis" 1fr / min-content 1fr;
+    background-color: $off-gray;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import AnalysisPanel from "../analysis_output/AnalysisPanel";
 import CodeEditor from "../code_editor/CodeEditor";
 import styles from "./contentLayout.module.scss";
 class ContentLayout extends React.Component {
@@ -6,14 +7,15 @@ class ContentLayout extends React.Component {
     super();
     this.state = {
       language: "javascript",
-      selector_ref: React.createRef()
+      selector_ref: React.createRef(),
+      analysis: null,
     };
   }
 
   render() {
     return (
       <div id="content-layout" className={styles.wrapper}>
-        <select style={{fontFamily:"monospace",padding:"10px",fontSize:"200%"}} ref={this.state.selector_ref} name="language" id="language-selector" onChange={()=>{this.forceUpdate()}}>
+        {/* <select style={{fontFamily:"monospace",padding:"10px",fontSize:"200%"}} ref={this.state.selector_ref} name="language" id="language-selector" onChange={()=>{this.forceUpdate()}}>
           <option value="javascript">JavaScript</option>
           <option value="java">Java</option>
           <option value="python">Python</option>
@@ -21,10 +23,24 @@ class ContentLayout extends React.Component {
           <option value="cpp">C++</option>
           <option value="c">C</option>
           <option value="go">Go</option>
-        </select>
-        <CodeEditor language={this.state.selector_ref.current?.value || this.state.language}></CodeEditor>
+        </select> */}
+        <CodeEditor callback = { (source)=>{this.fetchAnalysis(source)}}language={this.state.selector_ref.current?.value || this.state.language}></CodeEditor>
+        <AnalysisPanel key ={ this.state.analysis}analysis={this.state.analysis} ></AnalysisPanel>
+        
       </div>
     );
   }
+  fetchAnalysis = async src => {
+    const response = await fetch('/api/analysis', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ post: src }),
+    });
+    
+    const body = await response.text();
+    this.setState({analysis:body})
+  };
 }
 export default ContentLayout;

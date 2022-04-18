@@ -1,3 +1,53 @@
+@import '../../styles/colours';
 .wrapper {
     position: relative;
+}
+
+.status {
+    width: fit-content;
+    color: $off-white;
+    font-family: monospace;
+    position: relative;
+    padding: 0px 20px;
+    &::after {
+        content: '';
+        position: absolute;
+        padding: 5px;
+        right: 5px;
+        top: calc(50% - 5px);
+        border-radius: 50%;
+        text-align: center;
+    }
+    &.alive {
+        &::after {
+            background-color: green;
+        }
+    }
+    &.dead {
+        &::after {
+            background-color: red;
+        }
+    }
+    &:hover {
+        &::after {
+            position: absolute;
+            left: 0;
+            top: initial;
+            border-radius: initial;
+            color: $off-black;
+            background-color: $off-white;
+            opacity: 95%;
+            width: fit-content;
+        }
+        &.alive {
+            &::after {
+                content: 'Server running as of last ping';
+            }
+        }
+        &.dead {
+            &::after {
+                content: 'Server dead as of last ping';
+            }
+        }
+    }
 }

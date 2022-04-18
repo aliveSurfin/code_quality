@@ -1,0 +1,10 @@
+@import '../../styles/colours';
+.wrapper {
+    grid-area: analysis;
+    min-width: 100px;
+    background-color: $off-gray;
+    overflow: auto;
+    color: $off-white;
+    font-family: monospace;
+    font-size: 10pt;
+}

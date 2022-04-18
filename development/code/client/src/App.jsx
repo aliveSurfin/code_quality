@@ -5,43 +5,38 @@ import "./App.css"
 
 class App extends Component {
   state = {
-    response: '',
-    post: '',
-    responseToPost: '',
+    alive: false,
+    intervalID: 0,
   };
   
   componentDidMount() {
-    this.callApi()
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+    this.ping()
+      .then((res) => {console.log(res); this.setState({alive:true})})
+      .catch((err) => {console.log(err); this.setState({alive:false})});
+    this.setState({intervalID: window.setInterval(()=>{
+      this.ping()
+      .then((res) => {console.log(res);this.setState({alive:true}) })
+      .catch((err) => {console.log(err); this.setState({alive:false})});
+    },15000)})
+  }
+  componentWillUnmount(){
+    clearInterval(this.state.intervalID) 
   }
   
-  callApi = async () => {
-    const response = await fetch('/api/hello');
+  ping = async () => {
+    const response = await fetch('/api/ping');
     const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
+    if (response.status !== 200) throw Error("Server Not Alive");
     
     return body;
   };
   
-  handleSubmit = async e => {
-    e.preventDefault();
-    const response = await fetch('/api/test', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ post: this.state.post }),
-    });
-    const body = await response.text();
-    
-    this.setState({ responseToPost: body });
-  };
+  
   
 render() {
     return (
       <div className="App">
-        <MainLayout/>
+        <MainLayout key ={this.state.alive} alive={this.state.alive}/>
         <InDev/>
     </div>
     );

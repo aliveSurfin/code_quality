@@ -130,7 +130,7 @@ class Tokenizer {
         const cur = this.source.slice(this.cursor)
         const pos = this.position() // cache the position before matching/advancing
 
-        for (const [regExp, type] of TOKEN_SPEC) {
+        for (var [regExp, type] of TOKEN_SPEC) {
 
             const tokenValue = this.matchRegExp(regExp, cur)
 

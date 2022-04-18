@@ -127,7 +127,9 @@ class CodeEditor extends React.Component {
         lastWord: "",
         selected: 0,
       },
+      
     };
+    this.callback = props.callback
   }
 
   
@@ -163,18 +165,20 @@ class CodeEditor extends React.Component {
   handleAutoFill(charIn) {
     let addition = autoFill[charIn];
     if (addition != undefined) {
-      let text = this.state.editingRef.current.value;
-      let before = text.slice(0, this.state.editingRef.current.selectionStart);
-      let after = text.slice(
-        this.state.editingRef.current.selectionEnd,
-        text.length
-      );
-      this.state.editingRef.current.value = before + addition + after;
-      let newSelection = this.state.editingRef.current.selectionEnd -1;
-      this.state.editingRef.current.setSelectionRange(
-        newSelection,
-        newSelection
-      );
+      console.log(addition);
+      this.handleEntry(charIn + addition, 0)
+      // let text = this.state.editingRef.current.value;
+      // let before = text.slice(0, this.state.editingRef.current.selectionStart);
+      // let after = text.slice(
+      //   this.state.editingRef.current.selectionEnd,
+      //   text.length
+      // );
+      // this.state.editingRef.current.value = before + addition + after;
+      // let newSelection = this.state.editingRef.current.selectionEnd -1;
+      // this.state.editingRef.current.setSelectionRange(
+      //   newSelection,
+      //   newSelection
+      // );
     }
   }
   handleAutoComplete(curText){
@@ -212,7 +216,7 @@ class CodeEditor extends React.Component {
     this.handleAutoFill(event.nativeEvent.data)
     let text = this.state.editingRef.current.value;
     let autoComplete = this.handleAutoComplete(text)
-
+    text = this.state.editingRef.current.value;
     if (text[text.length - 1] === "\n") {
       text += " ";
     }
@@ -276,19 +280,39 @@ class CodeEditor extends React.Component {
       //TODO: ctrl s to force run analysis
       //TODO: ctrl e? to open export panel
     }
+    if(event.key === "s" && event.ctrlKey){
+      event.preventDefault()
+      console.log("test");
+      this.callback(this.state.text)
+    }
   }
 
-  handleEntry(addition) {
+  handleEntry(addition,move= null) {
     let text = this.state.text;
     const editingElement = this.state.editingRef.current;
-    let before = text.slice(0, this.state.editingRef.current.selectionStart);
-    let after = text.slice(
-      this.state.editingRef.current.selectionEnd,
-      text.length
-    );
-
-    let cursor = this.state.editingRef.current.selectionStart + addition.length;
-
+    let before
+    let after
+    if(move===null){
+      before = text.slice(0, this.state.editingRef.current.selectionStart);
+      after = text.slice(
+        this.state.editingRef.current.selectionEnd,
+        text.length
+      );
+      move = addition.length
+    }else{
+      before = text.slice(0, this.state.editingRef.current.selectionStart-1);
+      after = text.slice(
+        this.state.editingRef.current.selectionEnd-1,
+        text.length
+      );
+    }
+    console.log("before",before.split(""))
+    console.log("after",after.split(""))
+    // if(after[after.length-1] === "\n"){
+    //   before += " "
+    // }
+    let cursor = this.state.editingRef.current.selectionStart + move;
+    console.log(cursor);
     let newText = before + addition + after;
 
     editingElement.value = newText;
@@ -309,7 +333,7 @@ class CodeEditor extends React.Component {
   render() {
     return (
       <div id="codeEditor" className={styles.wrapper}>
-        <Overlay text={overlayElement} />
+        {/* <Overlay text={overlayElement} /> */}
         {this.state.autoComplete.words.length ? (
           <div
             className={styles.autoComplete}
