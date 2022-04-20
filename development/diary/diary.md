@@ -260,3 +260,32 @@ Closing information about the next sprint
 - Next sprint will be focused on getting user testing on the code editor and starting the analysis by creating a parser
 
 ---
+
+<center><font size="4">Sprint 2</font></center>
+<div style="text-align: right"> 14<sup>th</sup> March 2022</div>
+
+**Planned Items**
+- Code Parser #30
+- As a user I want to be able to enter code into a graphical interface #19
+
+**Review**
+
+The initial goal of the sprint was
+
+
+Requirements that were contained within the sprint
+
+
+Requirements that were met during the sprint
+
+
+What went well or went poorly during the sprint
+
+
+Any adjustments that are going to be made moving forward
+
+
+Closing information about the next sprint
+
+
+---
