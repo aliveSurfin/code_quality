@@ -1,0 +1,92 @@
+\documentclass[sigconf, nonacm]{acmart}
+\usepackage{pdfpages}
+\usepackage{amsmath}
+\newcommand*\textfrac[2]{
+  \frac{\text{#1}}{\text{#2}}
+}
+%% complete the rights form.
+\setcopyright{none}
+
+%% These commands are for a PROCEEDINGS abstract or paper.
+\acmConference[Dundee Computing Honours Project '22]{Computing Honours Projects '22: The University of Dundee Computing Project Showcase: '22.}{2022}{Dundee, UK}
+
+
+%%
+%% end of the preamble, start of the body of the document source.
+\begin{document}
+
+%%
+%% The "title" command has an optional parameter,
+%% allowing the author to define a "short title" to be used in page headers.
+\title{Code Quality Metrics - Mid-term}
+
+
+\author{Christy McCarron}
+\email{cswmccarron@dundee.ac.uk}
+\affiliation{%
+  \institution{University of Dundee}
+  \city{Dundee}
+  \state{Scotland}
+  \country{UK}
+}
+
+%%
+%% The abstract is a short summary of the work to be presented in the
+%% article.
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+
+%% A "teaser" image appears between the author and affiliation
+%% information and the body of the document, and typically spans the
+%% page.
+\begin{teaserfigure}
+  \includegraphics[width=\textwidth]{images/third_way.png}
+  \caption{Third Way, xkcd}
+  \Description{xkcd comic on language choices}
+  \label{fig:thirdWay}
+\end{teaserfigure}
+
+%%
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+
+% THIS IS THE MAIN PARTS OF THE DOCUMENT
+\input{sections/introduction}
+\input{sections/background}
+\input{sections/features.tex}
+\input{sections/technology.tex}
+\input{sections/movingForward.tex}
+
+
+
+
+%%
+%% The acknowledgments section is defined using the "acks" environment
+%% (and NOT an unnumbered section). This ensures the proper
+%% identification of the section in the article metadata, and the
+%% consistent spelling of the heading.
+% \begin{acks}
+% To Robert, for the bagels and explaining CMYK and color spaces.
+% \end{acks}
+
+%%
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+%%
+%% If your work has an appendix, this is the place to put it.
+\appendix
+
+\input{sections/appendixOne}
+
+\end{document}
+\endinput
+%%
+%% End of file `sample-sigconf.tex'.
