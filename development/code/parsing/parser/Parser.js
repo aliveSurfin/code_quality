@@ -69,8 +69,7 @@ class Parser {
         const token = this.lookahead;
         /* istanbul ignore next */
         if (token.type !== type) {
-            throw new ParseSyntaxError(
-                `Unexpected token "${token.value}" at ${JSON.stringify(this.tokenizer.position())}, expected: ${type}`, token)
+            throw new ParseSyntaxError(`Unexpected token of type  ${token.type} : ${token.value} at ${token.loc.start.line}:${token.loc.start.column}`, this.lookahead)
         }
         this.goNext()
         return token;
@@ -1092,7 +1091,7 @@ class Parser {
         /* istanbul ignore next */
         const type = this.lookahead == null ? "unknown" : `"${this.lookahead.type}"`;
         /* istanbul ignore next */
-        throw new ParseSyntaxError(`Unexpected literal production of type: ${type} ${loc}`, this.lookahead);
+        throw new ParseSyntaxError(`Unexpected literal production of type: ${this.lookahead.type} : ${this.lookahead.value} at ${this.lookahead.loc.start.line}:${this.lookahead.loc.start.column}`, this.lookahead)
     }
 
     /**

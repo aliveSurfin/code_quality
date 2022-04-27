@@ -177,8 +177,7 @@ class Tokenizer {
                 loc: { start: pos, end: this.position() },
             }
         }
-
-        throw new ParseSyntaxError(`Unexpected token: "${cur[0]}" at position: ${JSON.stringify(this.position()).toString()}`, { type: "Unknown", value: cur[0], loc: pos })
+        throw new ParseSyntaxError(`Unexpected token: "${cur[0]}" at ${pos.line}:${pos.column}`, { type: "Unknown", value: cur[0], loc: { start: pos, end: pos } })
     }
 
 

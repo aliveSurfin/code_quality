@@ -31,7 +31,7 @@ export function isValidAssignmentTarget(node) {
     if (node.type === AST_TYPES.Identifier || node.type === AST_TYPES.MemberExpression) {
         return node
     }
-    throw new ParseSyntaxError(`Incorrect assignment to type: ${node.type} : ${node.value} | ${node.loc.start.line}:${node.loc.start.column}`, node)
+    throw new ParseSyntaxError(`Incorrect assignment to type: ${node.type} : ${node.value} at ${node.loc.start.line}:${node.loc.start.column}`, node)
 }
 
 /**
