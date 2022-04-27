@@ -1,0 +1,68 @@
+@import "../../styles/colours";
+.wrapper {
+    grid-area: analysis;
+    min-width: 100px;
+    background-color: $off-gray;
+    overflow: auto;
+    color: $off-white;
+    font-family: monospace;
+    font-size: 14pt;
+}
+
+.analysis {
+    font-family: monospace;
+    color: $off-white;
+    background-color: $off-gray;
+    font-size: 14pt;
+    div {
+        cursor: pointer;
+        &.hovered {
+            border: 1px solid white;
+            position: relative;
+        }
+    }
+    padding-bottom: 20px;
+}
+
+.error {
+    color: $pastel-red;
+    font-size: 80%;
+    width: fit-content;
+}
+
+.syntax {
+    margin: 0 10px;
+    color: $pastel-red;
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+
+.download {
+    width: fit-content;
+    border: 1px solid white;
+    border-radius: 5%;
+    padding: 5px;
+    &:hover {
+        filter: opacity(50%);
+    }
+}
+
+.stoanalyse {
+    margin-left: 10px;
+    font-size: 150%;
+}
+
+.outputReport {
+    font-family: monospace;
+    color: $off-white;
+    background-color: $off-gray;
+    font-size: 14pt;
+}
+
+.nodeProblems {
+    font-size: 80%;
+    border: 1px dotted white;
+    margin-bottom: 5px;
+}

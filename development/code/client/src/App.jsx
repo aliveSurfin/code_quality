@@ -1,49 +1,54 @@
-import React, { Component } from 'react';
-import MainLayout from './components/main_layout/MainLayout'
-import InDev from './components/in_development/in_dev';
-import "./App.css"
+import React, { Component } from "react";
+import MainLayout from "./components/main_layout/MainLayout";
+import InDev from "./components/in_development/in_dev";
+import "./App.css";
 
 class App extends Component {
   state = {
-    response: '',
-    post: '',
-    responseToPost: '',
+    alive: false,
+    intervalID: 0,
   };
-  
+
   componentDidMount() {
-    this.callApi()
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+    this.ping()
+      .then((res) => {
+        this.setState({ alive: true });
+      })
+      .catch((err) => {
+        console.log(err);
+        this.setState({ alive: false });
+      });
+    this.setState({
+      intervalID: window.setInterval(() => {
+        this.ping()
+          .then((res) => {
+            this.setState({ alive: true });
+          })
+          .catch((err) => {
+            console.log(err);
+            this.setState({ alive: false });
+          });
+      }, 15000),
+    });
   }
-  
-  callApi = async () => {
-    const response = await fetch('/api/hello');
+  componentWillUnmount() {
+    clearInterval(this.state.intervalID);
+  }
+
+  ping = async () => {
+    const response = await fetch("/api/ping");
     const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
-    
+    if (response.status !== 200) throw Error("Server Not Alive");
+
     return body;
   };
-  
-  handleSubmit = async e => {
-    e.preventDefault();
-    const response = await fetch('/api/test', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ post: this.state.post }),
-    });
-    const body = await response.text();
-    
-    this.setState({ responseToPost: body });
-  };
-  
-render() {
+
+  render() {
     return (
       <div className="App">
-        <MainLayout/>
-        <InDev/>
-    </div>
+        <MainLayout key={this.state.alive} alive={this.state.alive} />
+        <InDev />
+      </div>
     );
   }
 }

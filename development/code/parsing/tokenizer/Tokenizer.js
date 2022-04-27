@@ -130,7 +130,7 @@ class Tokenizer {
         const cur = this.source.slice(this.cursor)
         const pos = this.position() // cache the position before matching/advancing
 
-        for (const [regExp, type] of TOKEN_SPEC) {
+        for (var [regExp, type] of TOKEN_SPEC) {
 
             const tokenValue = this.matchRegExp(regExp, cur)
 
@@ -177,8 +177,7 @@ class Tokenizer {
                 loc: { start: pos, end: this.position() },
             }
         }
-
-        throw new ParseSyntaxError(`Unexpected token: "${cur[0]}" at position: ${JSON.stringify(this.position()).toString()}`, { type: "Unknown", value: cur[0], loc: pos })
+        throw new ParseSyntaxError(`Unexpected token: "${cur[0]}" at ${pos.line}:${pos.column}`, { type: "Unknown", value: cur[0], loc: { start: pos, end: pos } })
     }
 
 
