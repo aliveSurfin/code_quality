@@ -17,15 +17,22 @@ There are many ways to measure code quality but what we must establish is:
     \label{fig:abs}
 \end{figure}
 In order to create a representation of the code we must tokenize the source code into it's component pieces and store this in an Abstract Syntax Tree. We can then use this representation of the code to preform our analysis.
-The below code has been transformed into the AST in Figure.
-\begin{verbatim}
-    while b != 0
-    if a > b
-       a := a - b
-    else
-        b := b - a
+The below code has been transformed into the AST in Figure \RefFig{fig:abs}
+\begin{figure}[h]
+    \begin{lstlisting}[language=Javascript]
+    while(b != 0){
+        if(a > b){
+            a = a - b
+        }else{
+            b = b -a 
+        }
+    }
     return a
-\end{verbatim}
+    \end{lstlisting}
+    \caption{Javascript example of euclid's algorithm}
+  \Description{Javascript example of euclid's algorithm}
+  \label{fig:euclid}
+\end{figure}
 Each possibility in execution is converted to a tree which follows the path.
 \subsection{Complexity Measures}
 To measure code complexity there are a number of algorithms which measure different aspects of complexity of the code. These measure are agnostic to the language used so once the source code has been converted to an Abstract Syntax Tree any language may be evauluated by them.
@@ -60,7 +67,7 @@ Then several measures can be calculated from these.
         printf("avg = %d", avg);
     }
 \end{verbatim}
-In this example c program 
+In this example c program
 \begin{itemize}
     \item n\textsuperscript{1} : 12
     \item n\textsuperscript{2} : 7
@@ -77,11 +84,11 @@ In this example c program
 \end{itemize}
 
 \subsubsection{Cyclomatic Complexity}
-Cyclomatic Complexity(CC) is defined as 
+Cyclomatic Complexity(CC) is defined as
 \begin{verbatim}
     The number of linearly independant paths within a piece of code
 \end{verbatim}
-For example 
+For example
 \newline
 This piece of code has a CC of 1
 
@@ -120,4 +127,31 @@ McCabe suggested this in his 1976 paper \cite{cycloMaticComplexity}
     of the modules manageable and allow for testing all the 
     independent paths..."
 \end{verbatim}
-    
+
+What is code quality
+Why measure code quality
+Social issues
+    Goodhart
+
+
+Static vs dynamic analysis
+    dynamic analysis   
+    static analysis
+
+Code quality tools
+    AST explorer
+    Clang
+    ESLint
+    Google Closure Compiler
+code quality methods
+
+
+Aims / objectives
+
+    Create tool to increase code quality
+    deeper understand code quality
+
+
+
+
+

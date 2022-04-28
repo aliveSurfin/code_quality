@@ -1,8 +1,44 @@
 \documentclass[sigconf, nonacm]{acmart}
 \usepackage{pdfpages}
 \usepackage{amsmath}
+\usepackage{listings}
 \newcommand*\textfrac[2]{
   \frac{\text{#1}}{\text{#2}}
+}
+\newcommand{\RefFig}[1]{~\ref{#1} on page ~\pageref{#1}}
+\usepackage{color}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\lstdefinelanguage{JavaScript}{
+  keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  sensitive=true
+}
+
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
 }
 %% complete the rights form.
 \setcopyright{none}
@@ -18,7 +54,7 @@
 %%
 %% The "title" command has an optional parameter,
 %% allowing the author to define a "short title" to be used in page headers.
-\title{Code Quality Metrics - Mid-term}
+\title{Code Quality Analysis}
 
 
 \author{Christy McCarron}
@@ -58,9 +94,14 @@
 % THIS IS THE MAIN PARTS OF THE DOCUMENT
 \input{sections/introduction}
 \input{sections/background}
-\input{sections/features.tex}
-\input{sections/technology.tex}
-\input{sections/movingForward.tex}
+\input{sections/methodology.tex}
+\input{sections/development.tex}
+
+\input{sections/desc_final_product.tex}
+\input{sections/appraisal.tex}
+\input{sections/conclusion.tex}
+\input{sections/FutureWork.tex}
+
 
 
 
