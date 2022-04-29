@@ -47,7 +47,7 @@ class App extends Component {
     return (
       <div className="App">
         <MainLayout key={this.state.alive} alive={this.state.alive} />
-        <InDev />
+        {/* <InDev /> */}
       </div>
     );
   }

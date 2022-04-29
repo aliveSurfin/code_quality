@@ -169,6 +169,7 @@ class CodeEditor extends React.Component {
       .slice(0, this.state.editingRef.current.selectionStart)
       .split(separatorRegex)
       .pop();
+    
     let possibleWords = [];
     if (lastWord) {
       possibleWords = [...JS_RESERVED_WORDS, ...words]

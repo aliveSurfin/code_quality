@@ -1,21 +1,32 @@
 @import '../../styles/colours';
 .wrapper {
     position: relative;
+    display: flex;
+    background-color: $off-black;
+    justify-content: space-between;
+    align-items: center;
+    object {
+        max-height: 50px;
+    }
+    * {
+        margin: 0 10px;
+    }
+    border-bottom: 1px ridge #2A0ED4;
 }
 
 .status {
-    width: fit-content;
+    width: auto;
     color: $off-white;
     font-family: monospace;
     position: relative;
-    padding: 0px 20px;
+    padding: 0;
     &::after {
         content: '';
         position: absolute;
-        padding: 5px;
-        right: 5px;
-        top: calc(50% - 5px);
-        border-radius: 50%;
+        padding: 1px;
+        left: 0;
+        bottom: 0;
+        width: 100%;
         text-align: center;
     }
     &.alive {
@@ -41,12 +52,12 @@
         }
         &.alive {
             &::after {
-                content: 'Server running as of last ping';
+                content: 'Server online';
             }
         }
         &.dead {
             &::after {
-                content: 'Server dead as of last ping';
+                content: 'Server down';
             }
         }
     }
