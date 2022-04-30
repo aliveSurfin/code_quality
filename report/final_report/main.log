@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.10)  28 APR 2022 11:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.10)  30 APR 2022 05:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -981,15 +981,15 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 9CB34B9DEE0A04FAF6D35CEF6C05DBD7;1802.
  ) 
 Here is how much of TeX's memory you used:
- 21746 strings out of 481239
- 326990 string characters out of 5920377
- 646884 words of memory out of 5000000
+ 21749 strings out of 481239
+ 327062 string characters out of 5920377
+ 647374 words of memory out of 5000000
  36192 multiletter control sequences out of 15000+600000
- 672752 words of font info for 215 fonts, out of 8000000 for 9000
+ 673025 words of font info for 217 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  63i,12n,100p,872b,1475s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4b.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
-Output written on /home/alivesurfin/uni2/code_quality/report/final_report/main.pdf (3 pages, 725375 bytes).
+Output written on /home/alivesurfin/uni2/code_quality/report/final_report/main.pdf (3 pages, 725809 bytes).
 PDF statistics:
  183 PDF objects out of 1000 (max. 8388607)
  143 compressed objects within 2 object streams
