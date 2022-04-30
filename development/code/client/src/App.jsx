@@ -2,7 +2,18 @@ import React, { Component } from "react";
 import MainLayout from "./components/main_layout/MainLayout";
 import InDev from "./components/in_development/in_dev";
 import "./App.css";
-
+import Overlay from "./components/reusable_comps/overlay/overlay";
+const overlayElement = (
+  <span>
+    {" "}
+    <b>This is a development build for research and testing only </b>
+    <br /> If you have found your way here without reading the participant
+    information, {/* eslint-disable-next-line */}
+    <a target="_blank" href="https://forms.office.com/r/p7KgBarcva">
+      please click here
+    </a>{" "}
+  </span>
+);
 class App extends Component {
   state = {
     alive: false,
@@ -42,12 +53,13 @@ class App extends Component {
 
     return body;
   };
-
+ 
   render() {
     return (
       <div className="App">
         <MainLayout key={this.state.alive} alive={this.state.alive} />
         {/* <InDev /> */}
+        <Overlay text={overlayElement}></Overlay>
       </div>
     );
   }
