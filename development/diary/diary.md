@@ -261,31 +261,127 @@ Closing information about the next sprint
 
 ---
 
-<center><font size="4">Sprint 2</font></center>
+<center><font size="4">Sprint 3</font></center>
 <div style="text-align: right"> 14<sup>th</sup> March 2022</div>
 
 **Planned Items**
 - Code Parser #30
 - As a user I want to be able to enter code into a graphical interface #19
 
+
+Overlay created for testing
+
+public page , icon , meta content 
+
+started course on parser
+
+fixed client for deployment
+
 **Review**
 
-The initial goal of the sprint was
+User testing on graphical interface released, found solution 
+
+making good progress with parser course
+
+---
+
+<center><font size="4">Sprint 4</font></center>
+<div style="text-align: right"> 28<sup>th</sup> March 2022</div>
+
+**Planned Items**
+- Code Parser #30
+
+Finished course and started parser 
+
+**review** 
+
+nothing was committed but work offline was made on parser
+Includes:
+Tokenizer
+	Tokenizer that iterates through a regexp token hierarchy specified in parsing/parser/tokenHierarchy.js
+	Currently handles whitespace and comments, tracks col/line/cursor throughout
+	comments tracked through parsing process
+Parser
+	Top down recursive descent predictive parser that eats tokens from tokenizer
+	Todo: documentation regarding BNF Grammar, some start here in parser.md
+	Todo: tree on error = return what of the tree we have on erroring
+	Supports:
+		Literals
+			String : all 3 types
+			Numerical : only int, todo: floats
+			Boolean : true/false
+			Null
+		Statements
+			StatementLists handled non recursively as per parser.md
+			VariableStatement
+			EmptyStatement
+			BlockStatement
+			ExpressionStatement
+		Identifiers
+		Expressions
+			AssignmentExpression
+			EqualityExpression
+			RelationalExpression
+			AreithmeticExpression
+			MultiplicativeExpression
+			ParenthesesExpression
+	Todo:
+		Logical Combinators
+		Loops
+		Function
+		Class
+
+Testing
+	Jest: added babel transforms to allow modules to be tested
+		Tests are named *.test.js and held in a folder called "test" in appropriate directory
+Server
+	Server changed to respect modular typing
+		imports changed to modular form : import x from y
+		__dirname created
 
 
-Requirements that were contained within the sprint
+
+---
+
+<center><font size="4">Sprint 5</font></center>
+<div style="text-align: right"> 11<sup>th</sup> April 2022</div>
+
+**Planned Items**
+- Code Parser #30
+- As a user I would like brackets to be auto filled in the code editor #28
+Finished course and started parser 
+
+**review** 
+
+ArrayExpressions
+
+LogicalCombinators
+
+Removed Empty Statement to be like babel
+
+javascript newline to end statements 
+
+Unary and not operators
+
+Function declaration & return statements
+
+iteration statements
+
+Added ParseSyntaxError
+
+Class declarations javascript style
+
+Member Expressions
+
+Property and Array Access
+
+AutoComplete and autofill update
+
+function calls
+
+jsdoc
 
 
-Requirements that were met during the sprint
-
-
-What went well or went poorly during the sprint
-
-
-Any adjustments that are going to be made moving forward
-
-
-Closing information about the next sprint
-
+evaluation on front-end changes
 
 ---

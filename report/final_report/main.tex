@@ -1,0 +1,168 @@
+\documentclass[sigconf, nonacm]{acmart}
+\usepackage{pdfpages}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{titlesec}
+\setcounter{secnumdepth}{5}
+\newcommand*\textfrac[2]{
+  \frac{\text{#1}}{\text{#2}}
+}
+\newcommand{\RefFig}[1]{\textit{~\ref{#1} on page ~\pageref{#1}}}
+
+
+
+
+\usepackage{color}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\definecolor{green}{rgb}{.2, .8, 0}
+\lstdefinelanguage{JavaScript}{
+  keywords={=>, break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  morestring=[b]`,
+  ndkeywords={const, class, export, boolean, throw, implements, import, this},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywordstyle=\color{blue}\bfseries,
+  identifierstyle=\color{black},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{green}\ttfamily,
+  sensitive=true
+}
+
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
+\lstdefinelanguage{HTML5}{
+        language=html,
+        sensitive=true, 
+        alsoletter={<>=-},
+        otherkeywords={
+        % HTML tags
+        <html>, <head>, <title>, </title>, <meta, />, </head>, <body>,
+        <canvas, \/canvas>, <script>, </script>, </body>, </html>, <!, html>, <style>, </style>, ><
+        },  
+        ndkeywords={
+        % General
+        =,
+        % HTML attributes
+        charset=, id=, width=, height=,
+        % CSS properties
+        border:, transform:, -moz-transform:, transition-duration:, transition-property:, transition-timing-function:
+        },  
+        morecomment=[s]{<!--}{-->},
+        tag=[s]
+}
+%% complete the rights form.
+\setcopyright{none}
+
+%% These commands are for a PROCEEDINGS abstract or paper.
+\acmConference[Dundee Computing Honours Project '22]{Computing Honours Projects '22: The University of Dundee Computing Project Showcase: '22.}{2022}{Dundee, UK}
+
+
+%%
+%% end of the preamble, start of the body of the document source.
+\begin{document}
+
+%%
+%% The "title" command has an optional parameter,
+%% allowing the author to define a "short title" to be used in page headers.
+\title{Code Quality Analysis}
+
+
+\author{Christy McCarron}
+\email{cswmccarron@dundee.ac.uk}
+\affiliation{%
+  \institution{University of Dundee}
+  \city{Dundee}
+  \state{Scotland}
+  \country{UK}
+}
+
+%%
+%% The abstract is a short summary of the work to be presented in the
+%% article.
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+
+%% A "teaser" image appears between the author and affiliation
+%% information and the body of the document, and typically spans the
+%% page.
+\begin{teaserfigure}
+  \includegraphics[width=\textwidth]{images/third_way.png}
+  \caption{Third Way, xkcd}
+  \Description{xkcd comic on language choices}
+  \label{fig:thirdWay}
+\end{teaserfigure}
+
+%%
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+
+% THIS IS THE MAIN PARTS OF THE DOCUMENT
+\input{sections/introduction}
+\input{sections/background}
+\input{sections/methodology.tex}
+\input{sections/development.tex}
+
+\input{sections/desc_final_product.tex}
+\input{sections/appraisal.tex}
+\input{sections/conclusion.tex}
+\input{sections/FutureWork.tex}
+
+
+
+
+
+%%
+%% The acknowledgments section is defined using the "acks" environment
+%% (and NOT an unnumbered section). This ensures the proper
+%% identification of the section in the article metadata, and the
+%% consistent spelling of the heading.
+\begin{acks}
+The author wishes to thank their advisor Dr. Craig Ramsay for their help through the entire process, who was always prompt with communication and willing to set up meetings right until the very end. Furthermore was willing to bounce ideas off constantly.
+\newline
+\newline
+The author would like to thank Dr. Michael Crabb the Teaching Lead for computing at University of Dundee, for the creation of the LaTeX template which was used to write this report.
+\newline
+\newline
+The author would like to bring attention to the writings of 
+Aaron Swartz on \href{https://archive.org/stream/GuerillaOpenAccessManifesto/Goamjuly2008_djvu.txt}{\underline{The Guerilla Open Access Manifesto}} , without the principles therein it would have been much more difficult to complete the project.
+
+\end{acks}
+
+%%
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+%%
+%% If your work has an appendix, this is the place to put it.
+\appendix
+\input{sections/appendixOne}
+
+\end{document}
+\endinput
+%%
+%% End of file `sample-sigconf.tex'.
