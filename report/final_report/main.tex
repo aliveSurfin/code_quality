@@ -2,26 +2,34 @@
 \usepackage{pdfpages}
 \usepackage{amsmath}
 \usepackage{listings}
+\usepackage{titlesec}
+\setcounter{secnumdepth}{5}
 \newcommand*\textfrac[2]{
   \frac{\text{#1}}{\text{#2}}
 }
-\newcommand{\RefFig}[1]{~\ref{#1} on page ~\pageref{#1}}
+\newcommand{\RefFig}[1]{\textit{~\ref{#1} on page ~\pageref{#1}}}
+
+
+
+
 \usepackage{color}
 \definecolor{lightgray}{rgb}{.9,.9,.9}
 \definecolor{darkgray}{rgb}{.4,.4,.4}
 \definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\definecolor{green}{rgb}{.2, .8, 0}
 \lstdefinelanguage{JavaScript}{
-  keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with},
+  keywords={=>, break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with},
   morecomment=[l]{//},
   morecomment=[s]{/*}{*/},
   morestring=[b]',
   morestring=[b]",
-  ndkeywords={class, export, boolean, throw, implements, import, this},
+  morestring=[b]`,
+  ndkeywords={const, class, export, boolean, throw, implements, import, this},
   keywordstyle=\color{blue}\bfseries,
-  ndkeywordstyle=\color{darkgray}\bfseries,
+  ndkeywordstyle=\color{blue}\bfseries,
   identifierstyle=\color{black},
   commentstyle=\color{purple}\ttfamily,
-  stringstyle=\color{red}\ttfamily,
+  stringstyle=\color{green}\ttfamily,
   sensitive=true
 }
 
@@ -39,6 +47,26 @@
    breaklines=true,
    showtabs=false,
    captionpos=b
+}
+\lstdefinelanguage{HTML5}{
+        language=html,
+        sensitive=true, 
+        alsoletter={<>=-},
+        otherkeywords={
+        % HTML tags
+        <html>, <head>, <title>, </title>, <meta, />, </head>, <body>,
+        <canvas, \/canvas>, <script>, </script>, </body>, </html>, <!, html>, <style>, </style>, ><
+        },  
+        ndkeywords={
+        % General
+        =,
+        % HTML attributes
+        charset=, id=, width=, height=,
+        % CSS properties
+        border:, transform:, -moz-transform:, transition-duration:, transition-property:, transition-timing-function:
+        },  
+        morecomment=[s]{<!--}{-->},
+        tag=[s]
 }
 %% complete the rights form.
 \setcopyright{none}
@@ -111,9 +139,17 @@
 %% (and NOT an unnumbered section). This ensures the proper
 %% identification of the section in the article metadata, and the
 %% consistent spelling of the heading.
-% \begin{acks}
-% To Robert, for the bagels and explaining CMYK and color spaces.
-% \end{acks}
+\begin{acks}
+The author wishes to thank their advisor Dr. Craig Ramsay for their help through the entire process, who was always prompt with communication and willing to set up meetings right until the very end. Furthermore was willing to bounce ideas off constantly.
+\newline
+\newline
+The author would like to thank Dr. Michael Crabb the Teaching Lead for computing at University of Dundee, for the creation of the LaTeX template which was used to write this report.
+\newline
+\newline
+The author would like to bring attention to the writings of 
+Aaron Swartz on \href{https://archive.org/stream/GuerillaOpenAccessManifesto/Goamjuly2008_djvu.txt}{\underline{The Guerilla Open Access Manifesto}} , without the principles therein it would have been much more difficult to complete the project.
+
+\end{acks}
 
 %%
 %% The next two lines define the bibliography style to be used, and
@@ -124,7 +160,6 @@
 %%
 %% If your work has an appendix, this is the place to put it.
 \appendix
-
 \input{sections/appendixOne}
 
 \end{document}

@@ -7,50 +7,302 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Database file #1: references.bib
 Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--no key, author in sketchplanations
+Warning--no author, editor, organization, or key in sketchplanations
+Warning--to sort, need author or key in sketchplanations
+Warning--no key, author in astexplorer
+Warning--no author, editor, organization, or key in astexplorer
+Warning--to sort, need author or key in astexplorer
+Warning--no key, author in clangTidy
+Warning--no author, editor, organization, or key in clangTidy
+Warning--to sort, need author or key in clangTidy
+Warning--no key, author in clangStatic
+Warning--no author, editor, organization, or key in clangStatic
+Warning--to sort, need author or key in clangStatic
+Warning--no key, author in eslint
+Warning--no author, editor, organization, or key in eslint
+Warning--to sort, need author or key in eslint
+Warning--no key, author in nearley.js
+Warning--no author, editor, organization, or key in nearley.js
+Warning--to sort, need author or key in nearley.js
+Warning--no key, author in ecmascript2017
+Warning--no author, editor, organization, or key in ecmascript2017
+Warning--to sort, need author or key in ecmascript2017
+Warning--no key, author in topDownBottomUp
+Warning--no author, editor, organization, or key in topDownBottomUp
+Warning--to sort, need author or key in topDownBottomUp
+Warning--no key, author in waterfallimage
+Warning--no author, editor, organization, or key in waterfallimage
+Warning--to sort, need author or key in waterfallimage
+Warning--no key, author in sprints
+Warning--no author, editor, organization, or key in sprints
+Warning--to sort, need author or key in sprints
+Warning--no key, author in react
+Warning--no author, editor, organization, or key in react
+Warning--to sort, need author or key in react
+Warning--no key, author in angularjs
+Warning--no author, editor, organization, or key in angularjs
+Warning--to sort, need author or key in angularjs
+Warning--no key, author in prism
+Warning--no author, editor, organization, or key in prism
+Warning--to sort, need author or key in prism
+Warning--no key, author in express
+Warning--no author, editor, organization, or key in express
+Warning--to sort, need author or key in express
+Warning--no key, author in createReactApp
+Warning--no author, editor, organization, or key in createReactApp
+Warning--to sort, need author or key in createReactApp
+Warning--no key, author in reactEvents
+Warning--no author, editor, organization, or key in reactEvents
+Warning--to sort, need author or key in reactEvents
+Warning--no key, author in reactRefs
+Warning--no author, editor, organization, or key in reactRefs
+Warning--to sort, need author or key in reactRefs
+Warning--no key, author in preventDefault
+Warning--no author, editor, organization, or key in preventDefault
+Warning--to sort, need author or key in preventDefault
+Warning--no key, author in reactSetState
+Warning--no author, editor, organization, or key in reactSetState
+Warning--to sort, need author or key in reactSetState
+Warning--no key, author in reactDidUpdate
+Warning--no author, editor, organization, or key in reactDidUpdate
+Warning--to sort, need author or key in reactDidUpdate
+Warning--no key, author in parserCourse
+Warning--no author, editor, organization, or key in parserCourse
+Warning--to sort, need author or key in parserCourse
+Warning--no key, author in regexp
+Warning--no author, editor, organization, or key in regexp
+Warning--to sort, need author or key in regexp
+Warning--no key, author in jest
+Warning--no author, editor, organization, or key in jest
+Warning--to sort, need author or key in jest
+Warning--no key, author in codeeditortesting
+Warning--no author, editor, organization, or key in codeeditortesting
+Warning--to sort, need author or key in codeeditortesting
+Warning--no key, author in codeeditortesting2
+Warning--no author, editor, organization, or key in codeeditortesting2
+Warning--to sort, need author or key in codeeditortesting2
+Warning--no key, author in finalTesting
+Warning--no author, editor, organization, or key in finalTesting
+Warning--to sort, need author or key in finalTesting
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=200001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Warning--no key, author in angularjs
+Warning--no key, author in angularjs
+Warning--no key, author in astexplorer
+Warning--no key, author in astexplorer
+Warning--no key, author in clangStatic
+Warning--no key, author in clangStatic
+Warning--no key, author in clangTidy
+Warning--no key, author in codeeditortesting
+Warning--no key, author in codeeditortesting
+Warning--no key, author in codeeditortesting2
+Warning--no key, author in createReactApp
+Warning--no key, author in createReactApp
+Warning--no key, author in ecmascript2017
+Warning--no key, author in ecmascript2017
+Warning--no key, author in eslint
+Warning--no key, author in eslint
+Warning--no key, author in express
+Warning--no key, author in express
+Warning--no key, author in finalTesting
+Warning--no key, author in finalTesting
+Warning--no key, author in jest
+Warning--no key, author in jest
+Warning--no key, author in nearley.js
+Warning--no key, author in nearley.js
+Warning--no key, author in parserCourse
+Warning--no key, author in parserCourse
+Warning--no key, author in preventDefault
+Warning--no key, author in preventDefault
+Warning--no key, author in prism
+Warning--no key, author in prism
+Warning--no key, author in reactEvents
+Warning--no key, author in reactEvents
+Warning--no key, author in react
+Warning--no key, author in reactSetState
+Warning--no key, author in reactDidUpdate
+Warning--no key, author in reactRefs
+Warning--no key, author in regexp
+Warning--no key, author in regexp
+Warning--no key, author in sketchplanations
+Warning--no key, author in sketchplanations
+Warning--no key, author in sprints
+Warning--no key, author in sprints
+Warning--no key, author in topDownBottomUp
+Warning--no key, author in topDownBottomUp
+Warning--no key, author in waterfallimage
+Warning--no key, author in waterfallimage
 Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--no key, author in ecmascript2017
+Warning--no author, editor, organization, or key in ecmascript2017
+Warning--empty author in ecmascript2017
+Warning--empty year in ecmascript2017
+Warning--no key, author in waterfallimage
+Warning--no author, editor, organization, or key in waterfallimage
+Warning--empty author in waterfallimage
+Warning--empty year in waterfallimage
+Warning--no key, author in angularjs
+Warning--no author, editor, organization, or key in angularjs
+Warning--empty author in angularjs
+Warning--empty year in angularjs
+Warning--no key, author in astexplorer
+Warning--no author, editor, organization, or key in astexplorer
+Warning--empty author in astexplorer
+Warning--empty year in astexplorer
+Warning--no key, author in parserCourse
+Warning--no author, editor, organization, or key in parserCourse
+Warning--empty author in parserCourse
+Warning--empty year in parserCourse
+Warning--no key, author in clangStatic
+Warning--no author, editor, organization, or key in clangStatic
+Warning--empty author in clangStatic
+Warning--empty year in clangStatic
+Warning--no key, author in clangTidy
+Warning--no author, editor, organization, or key in clangTidy
+Warning--empty author in clangTidy
+Warning--empty year in clangTidy
+Warning--no key, author in codeeditortesting
+Warning--no author, editor, organization, or key in codeeditortesting
+Warning--empty author in codeeditortesting
+Warning--empty year in codeeditortesting
+Warning--no key, author in codeeditortesting2
+Warning--no author, editor, organization, or key in codeeditortesting2
+Warning--empty author in codeeditortesting2
+Warning--empty year in codeeditortesting2
+Warning--no key, author in createReactApp
+Warning--no author, editor, organization, or key in createReactApp
+Warning--empty author in createReactApp
+Warning--empty year in createReactApp
+Warning--no key, author in preventDefault
+Warning--no author, editor, organization, or key in preventDefault
+Warning--empty author in preventDefault
+Warning--empty year in preventDefault
+Warning--no key, author in finalTesting
+Warning--no author, editor, organization, or key in finalTesting
+Warning--empty author in finalTesting
+Warning--empty year in finalTesting
+Warning--no key, author in sketchplanations
+Warning--no author, editor, organization, or key in sketchplanations
+Warning--empty author in sketchplanations
+Warning--empty year in sketchplanations
+Warning--no key, author in sprints
+Warning--no author, editor, organization, or key in sprints
+Warning--empty author in sprints
+Warning--empty year in sprints
+Warning--no key, author in reactEvents
+Warning--no author, editor, organization, or key in reactEvents
+Warning--empty author in reactEvents
+Warning--empty year in reactEvents
+Warning--no key, author in jest
+Warning--no author, editor, organization, or key in jest
+Warning--empty author in jest
+Warning--empty year in jest
+Warning--no key, author in nearley.js
+Warning--no author, editor, organization, or key in nearley.js
+Warning--empty author in nearley.js
+Warning--empty year in nearley.js
+Warning--no key, author in express
+Warning--no author, editor, organization, or key in express
+Warning--empty author in express
+Warning--empty year in express
+Warning--no key, author in eslint
+Warning--no author, editor, organization, or key in eslint
+Warning--empty author in eslint
+Warning--empty year in eslint
+Warning--no key, author in prism
+Warning--no author, editor, organization, or key in prism
+Warning--empty author in prism
+Warning--empty year in prism
+Warning--no key, author in react
+Warning--no author, editor, organization, or key in react
+Warning--empty author in react
+Warning--empty year in react
+Warning--no key, author in reactSetState
+Warning--no author, editor, organization, or key in reactSetState
+Warning--empty author in reactSetState
+Warning--empty year in reactSetState
+Warning--no key, author in reactDidUpdate
+Warning--no author, editor, organization, or key in reactDidUpdate
+Warning--empty author in reactDidUpdate
+Warning--empty year in reactDidUpdate
+Warning--no key, author in reactRefs
+Warning--no author, editor, organization, or key in reactRefs
+Warning--empty author in reactRefs
+Warning--empty year in reactRefs
+Warning--no key, author in regexp
+Warning--no author, editor, organization, or key in regexp
+Warning--empty author in regexp
+Warning--empty year in regexp
+Warning--no key, author in topDownBottomUp
+Warning--no author, editor, organization, or key in topDownBottomUp
+Warning--empty author in topDownBottomUp
+Warning--empty publisher in modernCodeReview
+Warning--empty address in modernCodeReview
+Warning--empty address in cohen2006best
+Warning--empty address in userStories
+Warning--empty organization in astwiki
+Warning--empty publisher in confusionInCodeReviews
+Warning--empty address in confusionInCodeReviews
+Warning--empty organization in code2flow
 Warning--empty address in HalsteadComplexity
-You've used 2 entries,
+Warning--empty booktitle in codeQualityStudents
+Warning--empty publisher in codeQualityStudents
+Warning--empty address in codeQualityStudents
+Warning--page numbers missing in both pages and numpages fields in moscow
+Warning--empty publisher in CCANDSLOC
+Warning--empty address in CCANDSLOC
+Warning--no number and no volume in waterfallvsagile
+Warning--page numbers missing in both pages and numpages fields in waterfallvsagile
+Warning--empty booktitle in openSourcePerspective
+Warning--empty publisher in openSourcePerspective
+Warning--empty address in openSourcePerspective
+Warning--empty year in node.js
+Warning--empty publisher in waterfall
+Warning--empty address in waterfall
+Warning--empty publisher in womenInOpenSource
+Warning--empty address in womenInOpenSource
+Warning--empty address in practicalCompiler
+You've used 61 entries,
             5959 wiz_defined-function locations,
-            1478 strings with 18036 characters,
-and the built_in function-call counts, 1623 in all, are:
-= -- 161
-> -- 40
-< -- 0
-+ -- 12
-- -- 16
-* -- 94
-:= -- 194
-add.period$ -- 12
-call.type$ -- 2
-change.case$ -- 11
-chr.to.int$ -- 2
-cite$ -- 3
-duplicate$ -- 152
-empty$ -- 106
-format.name$ -- 16
-if$ -- 329
-int.to.chr$ -- 2
+            1825 strings with 26969 characters,
+and the built_in function-call counts, 52062 in all, are:
+= -- 5694
+> -- 1098
+< -- 1
++ -- 377
+- -- 408
+* -- 3450
+:= -- 4742
+add.period$ -- 282
+call.type$ -- 61
+change.case$ -- 312
+chr.to.int$ -- 54
+cite$ -- 412
+duplicate$ -- 5150
+empty$ -- 3755
+format.name$ -- 454
+if$ -- 12547
+int.to.chr$ -- 9
 int.to.str$ -- 1
-missing$ -- 2
-newline$ -- 56
-num.names$ -- 16
-pop$ -- 51
+missing$ -- 95
+newline$ -- 690
+num.names$ -- 281
+pop$ -- 2701
 preamble$ -- 1
-purify$ -- 28
+purify$ -- 695
 quote$ -- 0
-skip$ -- 57
+skip$ -- 1677
 stack$ -- 0
-substring$ -- 110
-swap$ -- 14
-text.length$ -- 0
+substring$ -- 3341
+swap$ -- 498
+text.length$ -- 20
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 45
-warning$ -- 1
-while$ -- 16
+type$ -- 1543
+warning$ -- 253
+while$ -- 281
 width$ -- 0
-write$ -- 73
-(There was 1 warning)
+write$ -- 1179
+(There were 253 warnings)

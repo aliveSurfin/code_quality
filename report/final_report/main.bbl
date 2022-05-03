@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{2}
+\begin{thebibliography}{61}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -37,6 +37,511 @@
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
 
+\bibitem[\protect\citeauthoryear{??}{ecm}{[n.\,d.]}]%
+        {ecmascript2017}
+ \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://262.ecma-international.org/8.0/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{wat}{[n.\,d.]}]%
+        {waterfallimage}
+ \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://www.tutorialspoint.com/sdlc/sdlc_waterfall_model.htm}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{ang}{[n.\,d.]}]%
+        {angularjs}
+ \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock \bibinfo{title}{Angular: Superheroic JavaScript MVW framework}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://angularjs.org/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{ast}{[n.\,d.]}]%
+        {astexplorer}
+ \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock \bibinfo{title}{AST Explorer}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://astexplorer.net/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{par}{[n.\,d.]}]%
+        {parserCourse}
+ \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock \bibinfo{title}{Building a parser from scratch}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{http://dmitrysoshnikov.com/courses/parser-from-scratch/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{cla}{[n.\,d.]a}]%
+        {clangStatic}
+ \bibinfo{year}{[n.\,d.]}\natexlab{a}.
+\newblock \bibinfo{title}{Clang Static Analyzer}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://clang-analyzer.llvm.org/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{cla}{[n.\,d.]b}]%
+        {clangTidy}
+ \bibinfo{year}{[n.\,d.]}\natexlab{b}.
+\newblock \bibinfo{title}{Clang Tidy}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://clang.llvm.org/extra/clang-tidy/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{cod}{[n.\,d.]a}]%
+        {codeeditortesting}
+ \bibinfo{year}{[n.\,d.]}\natexlab{a}.
+\newblock \bibinfo{title}{Code editor testing}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://cq-code-editor-testing.herokuapp.com/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{cod}{[n.\,d.]b}]%
+        {codeeditortesting2}
+ \bibinfo{year}{[n.\,d.]}\natexlab{b}.
+\newblock \bibinfo{title}{Code editor testing updated}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://code-editor-updated.herokuapp.com/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{cre}{[n.\,d.]}]%
+        {createReactApp}
+ \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock \bibinfo{title}{Create a new react app}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://reactjs.org/docs/create-a-new-react-app.html}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{pre}{[n.\,d.]}]%
+        {preventDefault}
+ \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock \bibinfo{title}{Event.preventDefault() - web apis: MDN}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{fin}{[n.\,d.]}]%
+        {finalTesting}
+ \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock \bibinfo{title}{Final testing deploy}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://code-quality-final-testing.herokuapp.com/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{ske}{[n.\,d.]}]%
+        {sketchplanations}
+ \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock \bibinfo{title}{Goodhart's law: When a measure becomes a target, it
+  cease to be a good measure.}
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://sketchplanations.com/goodharts-law}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{spr}{[n.\,d.]}]%
+        {sprints}
+ \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock \bibinfo{title}{Guide to scrum sprints: Wrike Scrum Guide}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://www.wrike.com/scrum-guide/scrum-sprints/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{rea}{[n.\,d.]a}]%
+        {reactEvents}
+ \bibinfo{year}{[n.\,d.]}\natexlab{a}.
+\newblock \bibinfo{title}{Handling events}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://reactjs.org/docs/handling-events.html}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{jes}{[n.\,d.]}]%
+        {jest}
+ \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock \bibinfo{title}{Jest · delightful JavaScript testing}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://jestjs.io/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{nea}{[n.\,d.]}]%
+        {nearley.js}
+ \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock \bibinfo{title}{Nearley.js2.20.1}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://nearley.js.org/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{exp}{[n.\,d.]}]%
+        {express}
+ \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock \bibinfo{title}{Node.js web application framework}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://expressjs.com/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{esl}{[n.\,d.]}]%
+        {eslint}
+ \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock \bibinfo{title}{Pluggable javascript linter}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://eslint.org/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{pri}{[n.\,d.]}]%
+        {prism}
+ \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock \bibinfo{title}{Prism.js}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://prismjs.com/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{rea}{[n.\,d.]b}]%
+        {react}
+ \bibinfo{year}{[n.\,d.]}\natexlab{b}.
+\newblock \bibinfo{title}{React a JavaScript library for building user
+  interfaces}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://reactjs.org/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{rea}{[n.\,d.]c}]%
+        {reactSetState}
+ \bibinfo{year}{[n.\,d.]}\natexlab{c}.
+\newblock \bibinfo{title}{React.component}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://reactjs.org/docs/react-component.html#setstate}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{rea}{[n.\,d.]d}]%
+        {reactDidUpdate}
+ \bibinfo{year}{[n.\,d.]}\natexlab{d}.
+\newblock \bibinfo{title}{React.component}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://reactjs.org/docs/react-component.html#componentdidupdate}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{rea}{[n.\,d.]e}]%
+        {reactRefs}
+ \bibinfo{year}{[n.\,d.]}\natexlab{e}.
+\newblock \bibinfo{title}{Refs and the dom}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://reactjs.org/docs/refs-and-the-dom.html}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{reg}{[n.\,d.]}]%
+        {regexp}
+ \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock \bibinfo{title}{Regular expressions - javascript: MDN}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{??}{top}{2019}]%
+        {topDownBottomUp}
+ \bibinfo{year}{2019}\natexlab{}.
+\newblock \bibinfo{title}{Difference between top down parsing and bottom up
+  parsing}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://www.geeksforgeeks.org/difference-between-top-down-parsing-and-bottom-up-parsing/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Bacchelli and Bird}{Bacchelli and
+  Bird}{2013}]%
+        {modernCodeReview}
+\bibfield{author}{\bibinfo{person}{Alberto Bacchelli} {and}
+  \bibinfo{person}{Christian Bird}.} \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Expectations, outcomes, and challenges of modern
+  code review}. In \bibinfo{booktitle}{\emph{2013 35th International Conference
+  on Software Engineering (ICSE)}}. \bibinfo{pages}{712--721}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/ICSE.2013.6606617}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Ball}{Ball}{1999}]%
+        {dynamicAnalysis}
+\bibfield{author}{\bibinfo{person}{Thoms Ball}.}
+  \bibinfo{year}{1999}\natexlab{}.
+\newblock \showarticletitle{The Concept of Dynamic Analysis}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 7th European Software
+  Engineering Conference Held Jointly with the 7th ACM SIGSOFT International
+  Symposium on Foundations of Software Engineering}} (Toulouse, France)
+  \emph{(\bibinfo{series}{ESEC/FSE-7})}. \bibinfo{publisher}{Springer-Verlag},
+  \bibinfo{address}{Berlin, Heidelberg}, \bibinfo{pages}{216–234}.
+\newblock
+\showISBNx{3540665382}
+
+
+\bibitem[\protect\citeauthoryear{Chidamber and Kemerer}{Chidamber and
+  Kemerer}{1994}]%
+        {classDesignMetrics}
+\bibfield{author}{\bibinfo{person}{S.R. Chidamber} {and} \bibinfo{person}{C.F.
+  Kemerer}.} \bibinfo{year}{1994}\natexlab{}.
+\newblock \showarticletitle{A metrics suite for object oriented design}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Software Engineering}}
+  \bibinfo{volume}{20}, \bibinfo{number}{6} (\bibinfo{year}{1994}),
+  \bibinfo{pages}{476--493}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/32.295895}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Cohen, Brown, Teleki, and DuRette}{Cohen
+  et~al\mbox{.}}{2006}]%
+        {cohen2006best}
+\bibfield{author}{\bibinfo{person}{J. Cohen}, \bibinfo{person}{E. Brown},
+  \bibinfo{person}{S. Teleki}, {and} \bibinfo{person}{B. DuRette}.}
+  \bibinfo{year}{2006}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Best Kept Secrets of Peer Code Review}}.
+\newblock \bibinfo{publisher}{Printing Systems}.
+\newblock
+\showISBNx{9781599160672}
+\urldef\tempurl%
+\url{https://books.google.co.uk/books?id=b9ywHanWN5kC}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Cohn}{Cohn}{2004}]%
+        {userStories}
+\bibfield{author}{\bibinfo{person}{Mike Cohn}.}
+  \bibinfo{year}{2004}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{User stories applied: For agile software
+  development}}.
+\newblock \bibinfo{publisher}{Addison-Wesley Professional}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Dcoetzee}{Dcoetzee}{2011}]%
+        {astwiki}
+\bibfield{author}{\bibinfo{person}{Dcoetzee}.} \bibinfo{year}{2011}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{An abstract syntax tree for the following
+  code for the Euclidean algorithm}}.
+\newblock
+\urldef\tempurl%
+\url{https://en.wikipedia.org/wiki/Abstract_syntax_tree#/media/File:Abstract_syntax_tree_for_Euclidean_algorithm.svg}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Earley}{Earley}{1970}]%
+        {earley}
+\bibfield{author}{\bibinfo{person}{Jay Earley}.}
+  \bibinfo{year}{1970}\natexlab{}.
+\newblock \showarticletitle{An Efficient Context-Free Parsing Algorithm}.
+\newblock \bibinfo{journal}{\emph{Commun. ACM}} \bibinfo{volume}{13},
+  \bibinfo{number}{2} (\bibinfo{date}{feb} \bibinfo{year}{1970}),
+  \bibinfo{pages}{94–102}.
+\newblock
+\showISSN{0001-0782}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/362007.362035}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Ebert, Castor, Novielli, and Serebrenik}{Ebert
+  et~al\mbox{.}}{2019}]%
+        {confusionInCodeReviews}
+\bibfield{author}{\bibinfo{person}{Felipe Ebert}, \bibinfo{person}{Fernando
+  Castor}, \bibinfo{person}{Nicole Novielli}, {and} \bibinfo{person}{Alexander
+  Serebrenik}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Confusion in Code Reviews: Reasons, Impacts, and
+  Coping Strategies}. In \bibinfo{booktitle}{\emph{2019 IEEE 26th International
+  Conference on Software Analysis, Evolution and Reengineering (SANER)}}.
+  \bibinfo{pages}{49--60}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/SANER.2019.8668024}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Flow}{Flow}{2022}]%
+        {code2flow}
+\bibfield{author}{\bibinfo{person}{Code~2 Flow}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{code2flow online interactive code to
+  flowchart converter}}.
+\newblock
+\urldef\tempurl%
+\url{https://code2flow.com/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Fowler, Highsmith, et~al\mbox{.}}{Fowler
+  et~al\mbox{.}}{2001}]%
+        {agile}
+\bibfield{author}{\bibinfo{person}{Martin Fowler}, \bibinfo{person}{Jim
+  Highsmith}, {et~al\mbox{.}}} \bibinfo{year}{2001}\natexlab{}.
+\newblock \showarticletitle{The agile manifesto}.
+\newblock \bibinfo{journal}{\emph{Software development}} \bibinfo{volume}{9},
+  \bibinfo{number}{8} (\bibinfo{year}{2001}), \bibinfo{pages}{28--35}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Fritz}{Fritz}{2016}]%
+        {FRITZ201667}
+\bibfield{author}{\bibinfo{person}{T. Fritz}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Measuring individual productivity}.
+\newblock In \bibinfo{booktitle}{\emph{Perspectives on Data Science for
+  Software Engineering}}, \bibfield{editor}{\bibinfo{person}{Tim Menzies},
+  \bibinfo{person}{Laurie Williams}, {and} \bibinfo{person}{Thomas Zimmermann}}
+  (Eds.). \bibinfo{publisher}{Morgan Kaufmann}, \bibinfo{address}{Boston},
+  \bibinfo{pages}{67--71}.
+\newblock
+\showISBNx{978-0-12-804206-9}
+\urldef\tempurl%
+\url{https://doi.org/10.1016/B978-0-12-804206-9.00013-1}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Goertzel}{Goertzel}{2016}]%
+        {legalLiability}
+\bibfield{author}{\bibinfo{person}{Karen Goertzel}.}
+  \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Legal liability for bad software}.
+\newblock \bibinfo{journal}{\emph{CrossTalk}}  \bibinfo{volume}{29}
+  (\bibinfo{date}{01} \bibinfo{year}{2016}), \bibinfo{pages}{23--28}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Goodhart}{Goodhart}{1984}]%
+        {Goodhart1984}
+\bibfield{author}{\bibinfo{person}{C.~A.~E. Goodhart}.}
+  \bibinfo{year}{1984}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Problems of Monetary Management: The UK
+  Experience}}.
+\newblock \bibinfo{publisher}{Macmillan Education UK},
+  \bibinfo{address}{London}, \bibinfo{pages}{91--121}.
+\newblock
+\showISBNx{978-1-349-17295-5}
+\urldef\tempurl%
+\url{https://doi.org/10.1007/978-1-349-17295-5_4}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Graylin, Hale, Smith, David, Kraft, Charles,
+  et~al\mbox{.}}{Graylin et~al\mbox{.}}{2009}]%
+        {graylin2009cyclomatic}
+\bibfield{author}{\bibinfo{person}{Jay Graylin}, \bibinfo{person}{Joanne~E
+  Hale}, \bibinfo{person}{Randy~K Smith}, \bibinfo{person}{Hale David},
+  \bibinfo{person}{Nicholas~A Kraft}, \bibinfo{person}{WARD Charles},
+  {et~al\mbox{.}}} \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{Cyclomatic complexity and lines of code: empirical
+  evidence of a stable linear relationship}.
+\newblock \bibinfo{journal}{\emph{Journal of Software Engineering and
+  Applications}} \bibinfo{volume}{2}, \bibinfo{number}{03}
+  (\bibinfo{year}{2009}), \bibinfo{pages}{137}.
+\newblock
+
+
 \bibitem[\protect\citeauthoryear{Halstead}{Halstead}{1977}]%
         {HalsteadComplexity}
 \bibfield{author}{\bibinfo{person}{Maurice~H Halstead}.}
@@ -46,12 +551,256 @@
 \newblock
 
 
+\bibitem[\protect\citeauthoryear{Keuning, Heeren, and Jeuring}{Keuning
+  et~al\mbox{.}}{2017}]%
+        {codeQualityStudents}
+\bibfield{author}{\bibinfo{person}{Hieke Keuning}, \bibinfo{person}{Bastiaan
+  Heeren}, {and} \bibinfo{person}{Johan Jeuring}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Code Quality Issues in Student Programs}.
+  \bibinfo{pages}{110--115}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3059009.3059061}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Kuhn}{Kuhn}{2009}]%
+        {moscow}
+\bibfield{author}{\bibinfo{person}{Janet Kuhn}.}
+  \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{Decrypting the MoSCoW analysis}.
+\newblock \bibinfo{journal}{\emph{The workable, practical guide to Do IT
+  Yourself}}  \bibinfo{volume}{5} (\bibinfo{year}{2009}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Landman, Serebrenik, and Vinju}{Landman
+  et~al\mbox{.}}{2014}]%
+        {CCANDSLOC}
+\bibfield{author}{\bibinfo{person}{Davy Landman}, \bibinfo{person}{Alexander
+  Serebrenik}, {and} \bibinfo{person}{Jurgen Vinju}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Empirical Analysis of the Relationship between CC
+  and SLOC in a Large Corpus of Java Methods}. In
+  \bibinfo{booktitle}{\emph{2014 IEEE International Conference on Software
+  Maintenance and Evolution}}. \bibinfo{pages}{221--230}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/ICSME.2014.44}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Martin}{Martin}{2008}]%
+        {cleanCode}
+\bibfield{author}{\bibinfo{person}{Robert~C. Martin}.}
+  \bibinfo{year}{2008}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Clean Code: A Handbook of Agile Software
+  Craftsmanship} (\bibinfo{edition}{1} ed.)}.
+\newblock \bibinfo{publisher}{Prentice Hall PTR}, \bibinfo{address}{USA}.
+\newblock
+\showISBNx{0132350882}
+
+
 \bibitem[\protect\citeauthoryear{McCabe}{McCabe}{1976}]%
         {cycloMaticComplexity}
 \bibfield{author}{\bibinfo{person}{Thomas~J McCabe}.}
   \bibinfo{year}{1976}\natexlab{}.
 \newblock \bibinfo{booktitle}{\emph{A Complexity Measure}}.
 \newblock \bibinfo{type}{{T}echnical {R}eport}. \bibinfo{institution}{IEEE}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{McCormick}{McCormick}{2012}]%
+        {waterfallvsagile}
+\bibfield{author}{\bibinfo{person}{Mike McCormick}.}
+  \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{Waterfall vs. Agile methodology}.
+\newblock \bibinfo{journal}{\emph{MPCS, N/A}} (\bibinfo{year}{2012}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{McCracken and Reilly}{McCracken and
+  Reilly}{2003}]%
+        {bnf}
+\bibfield{author}{\bibinfo{person}{Daniel~D. McCracken} {and}
+  \bibinfo{person}{Edwin~D. Reilly}.} \bibinfo{year}{2003}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Backus-Naur Form (BNF)}}.
+\newblock \bibinfo{publisher}{John Wiley and Sons Ltd.},
+  \bibinfo{address}{GBR}, \bibinfo{pages}{129–131}.
+\newblock
+\showISBNx{0470864125}
+
+
+\bibitem[\protect\citeauthoryear{Morrison, Pandita, Murphy-Hill, and
+  McLaughlin}{Morrison et~al\mbox{.}}{2016}]%
+        {openSourcePerspective}
+\bibfield{author}{\bibinfo{person}{Patrick Morrison}, \bibinfo{person}{Rahul
+  Pandita}, \bibinfo{person}{Emerson Murphy-Hill}, {and} \bibinfo{person}{Anne
+  McLaughlin}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Veteran developers' contributions and motivations:
+  An open source perspective}. \bibinfo{pages}{171--179}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/VLHCC.2016.7739681}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Node.js}{Node.js}{[n.\,d.]}]%
+        {node.js}
+\bibfield{author}{\bibinfo{person}{Node.js}.}
+  \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://nodejs.org/en/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{on~Apr~16 and Geer}{on~Apr~16 and
+  Geer}{2021}]%
+        {olivergeer}
+\bibfield{author}{\bibinfo{person}{Oliver~Geer on Apr~16} {and}
+  \bibinfo{person}{Oliver Geer}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \bibinfo{title}{Creating an editable Textarea that supports
+  syntax-highlighted code: CSS-tricks}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://css-tricks.com/creating-an-editable-textarea-that-supports-syntax-highlighted-code/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Reynaert and Sallee}{Reynaert and
+  Sallee}{2016}]%
+        {NBERw22911}
+\bibfield{author}{\bibinfo{person}{Mathias Reynaert} {and}
+  \bibinfo{person}{James~M Sallee}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Corrective Policy and Goodhart's Law: The
+  Case of Carbon Emissions from Automobiles}}.
+\newblock \bibinfo{type}{Working Paper} 22911. \bibinfo{institution}{National
+  Bureau of Economic Research}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.3386/w22911}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Royce}{Royce}{1987}]%
+        {waterfall}
+\bibfield{author}{\bibinfo{person}{Winston~W Royce}.}
+  \bibinfo{year}{1987}\natexlab{}.
+\newblock \showarticletitle{Managing the development of large software systems:
+  concepts and techniques}. In \bibinfo{booktitle}{\emph{Proceedings of the 9th
+  international conference on Software Engineering}}.
+  \bibinfo{pages}{328--338}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Serebrenik}{Serebrenik}{2016}]%
+        {softwareEvolution}
+\bibfield{author}{\bibinfo{person}{Alexander Serebrenik}.}
+  \bibinfo{year}{2016}\natexlab{}.
+\newblock \bibinfo{title}{2IS55 Software Evolution}.
+\newblock
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Shull, Melnik, Turhan, Layman, Diep, and
+  Erdogmus}{Shull et~al\mbox{.}}{2010}]%
+        {tdd}
+\bibfield{author}{\bibinfo{person}{Forrest Shull}, \bibinfo{person}{Grigori
+  Melnik}, \bibinfo{person}{Burak Turhan}, \bibinfo{person}{Lucas Layman},
+  \bibinfo{person}{Madeline Diep}, {and} \bibinfo{person}{Hakan Erdogmus}.}
+  \bibinfo{year}{2010}\natexlab{}.
+\newblock \showarticletitle{What Do We Know about Test-Driven Development?}
+\newblock \bibinfo{journal}{\emph{IEEE Software}} \bibinfo{volume}{27},
+  \bibinfo{number}{6} (\bibinfo{year}{2010}), \bibinfo{pages}{16--19}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/MS.2010.152}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Silva, Nunes, and Terra}{Silva
+  et~al\mbox{.}}{2017}]%
+        {codeQualityEducation}
+\bibfield{author}{\bibinfo{person}{Danilo Silva}, \bibinfo{person}{Ingrid
+  Nunes}, {and} \bibinfo{person}{Ricardo Terra}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Investigating code quality tools in the context of
+  software engineering education: CODE TOOLS IN SOFTWARE ENGINEERING
+  EDUCATION}.
+\newblock \bibinfo{journal}{\emph{Computer Applications in Engineering
+  Education}}  \bibinfo{volume}{25} (\bibinfo{date}{02} \bibinfo{year}{2017}).
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1002/cae.21793}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Strathern}{Strathern}{1997}]%
+        {strathern1997improving}
+\bibfield{author}{\bibinfo{person}{Marilyn Strathern}.}
+  \bibinfo{year}{1997}\natexlab{}.
+\newblock \showarticletitle{‘Improving ratings’: audit in the British
+  University system}.
+\newblock \bibinfo{journal}{\emph{European review}} \bibinfo{volume}{5},
+  \bibinfo{number}{3} (\bibinfo{year}{1997}), \bibinfo{pages}{305--321}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Trinkenreich}{Trinkenreich}{2021}]%
+        {womenInOpenSource}
+\bibfield{author}{\bibinfo{person}{Bianca Trinkenreich}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Please Don't Go — A Comprehensive Approach to
+  Increase Women's Participation in Open Source Software}. In
+  \bibinfo{booktitle}{\emph{2021 IEEE/ACM 43rd International Conference on
+  Software Engineering: Companion Proceedings (ICSE-Companion)}}.
+  \bibinfo{pages}{293--298}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/ICSE-Companion52605.2021.00131}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Watson}{Watson}{2017}]%
+        {practicalCompiler}
+\bibfield{author}{\bibinfo{person}{Des Watson}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{A Practical Approach to Compiler
+  Construction}}.
+\newblock \bibinfo{publisher}{Springer}.
+\newblock
+\showISBNx{9783319527895; 3319527894}
+\urldef\tempurl%
+\url{libgen.li/file.php?md5=08f72a9fa85f7793297178164a5580dc}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Wikipedia}{Wikipedia}{2022a}]%
+        {wiki:Continuous_integration}
+\bibfield{author}{\bibinfo{person}{Wikipedia}.}
+  \bibinfo{year}{2022}\natexlab{a}.
+\newblock \bibinfo{title}{{Continuous integration} --- {W}ikipedia{,} The Free
+  Encyclopedia}.
+\newblock
+  \bibinfo{howpublished}{\url{http://en.wikipedia.org/w/index.php?title=Continuous\%20integration&oldid=1081041616}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Wikipedia}{Wikipedia}{2022b}]%
+        {wiki:Integrated_development_environment}
+\bibfield{author}{\bibinfo{person}{Wikipedia}.}
+  \bibinfo{year}{2022}\natexlab{b}.
+\newblock \bibinfo{title}{{Integrated development environment} ---
+  {W}ikipedia{,} The Free Encyclopedia}.
+\newblock
+  \bibinfo{howpublished}{\url{http://en.wikipedia.org/w/index.php?title=Integrated\%20development\%20environment&oldid=1084718432}}.
 \newblock
 
 
